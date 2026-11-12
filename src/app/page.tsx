@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import Features from "@/components/Features";
 import AppScreenshotsShowcase from "@/components/AppScreenshotsShowcase";
 import MokaComparison from "@/components/MokaComparison";
 import WhyChooseUs from "@/components/WhyChooseUs";
@@ -30,28 +29,25 @@ export default function Home() {
       <Navbar onOpenPayment={handleOpenPayment} />
 
       <main>
-        {/* 1. Hero — Moka POS Style: Stylish Capster + 1 App Screenshot + Brief Highlight */}
+        {/* 1. Hero: Full Background Stylish Capster + 1 App Cashier Mockup + Elegant Highlight */}
         <HeroSection onOpenPayment={handleOpenPayment} />
 
-        {/* 2. Features — Modul kasir kilat, komisi kapster, printer thermal, offline engine */}
-        <Features />
+        {/* 2. App Screenshots Showcase: Tampilan Nyata Aplikasi Barber Suite v4.2.0 */}
+        <AppScreenshotsShowcase onOpenPayment={handleOpenPayment} />
 
-        {/* 3. App Screenshots Showcase — Tampilan Asli Aplikasi Barber Suite v4.2.0 */}
-        <AppScreenshotsShowcase />
-
-        {/* 4. Head-to-Head vs Moka POS — Kenapa Barber Suite Lebih Unggul & Hemat */}
+        {/* 3. Head-to-Head vs Moka POS: Kenapa Barber Suite Lebih Unggul & Hemat */}
         <MokaComparison onOpenPayment={handleOpenPayment} />
 
-        {/* 5. Why Choose Us — 4 Nilai Lebih + Statistik */}
+        {/* 4. Why Choose Us: 4 Nilai Lebih + Statistik */}
         <WhyChooseUs />
 
-        {/* 6. Testimonials — Cerita nyata pemilik barbershop */}
+        {/* 5. Testimonials: Cerita nyata pemilik barbershop */}
         <Testimonials />
 
-        {/* 7. FAQ — Tanya jawab lengkap seputar instalasi & offline engine */}
+        {/* 6. FAQ: Tanya jawab lengkap seputar instalasi & offline engine */}
         <FAQ />
 
-        {/* 8. Closing CTA — Penutup Beli Langsung (Hard-sell) */}
+        {/* 7. Closing CTA: Penutup Beli Langsung (Hard-sell) */}
         <CTAFinal onOpenPayment={handleOpenPayment} />
       </main>
 
