@@ -13,7 +13,6 @@ import {
   Info,
 } from "lucide-react";
 
-// Declare Midtrans Snap type
 declare global {
   interface Window {
     snap?: {
@@ -66,14 +65,12 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
         throw new Error(data.error || "Gagal membuat transaksi");
       }
 
-      // Check if server is running in demo/sandbox mode without real Midtrans key
       if (data.isDemoMode) {
         setDemoOrderId(data.orderId);
         setIsLoading(false);
         return;
       }
 
-      // Open Midtrans Snap popup
       if (window.snap && data.snapToken) {
         window.snap.pay(data.snapToken, {
           onSuccess: (result) => {
@@ -96,7 +93,6 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
           },
         });
       } else if (data.redirectUrl) {
-        // Fallback: redirect to Midtrans payment page
         window.open(data.redirectUrl, "_blank");
       } else {
         setDemoOrderId(data.orderId);
@@ -132,21 +128,21 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
           onClick={onClose}
         >
           {/* Backdrop */}
-          <div className="fixed inset-0 bg-black/80 backdrop-blur-md" />
+          <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs" />
 
-          {/* Modal */}
+          {/* Modal Card */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            initial={{ opacity: 0, scale: 0.95, y: 15 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            exit={{ opacity: 0, scale: 0.95, y: 15 }}
+            transition={{ duration: 0.2 }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-md bg-gradient-to-b from-neutral-900 to-neutral-950 border border-neutral-800 rounded-3xl p-6 sm:p-7 shadow-2xl z-10 my-8"
+            className="relative w-full max-w-md bg-white border border-slate-200 rounded-3xl p-6 sm:p-7 shadow-2xl z-10 my-8 text-slate-900"
           >
             {/* Close button */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 p-2 text-gray-400 hover:text-white transition-colors rounded-full hover:bg-white/10"
+              className="absolute top-4 right-4 p-2 text-slate-400 hover:text-slate-700 transition-colors rounded-full hover:bg-slate-100"
               aria-label="Tutup modal"
             >
               <X className="w-5 h-5" />
@@ -154,24 +150,24 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
 
             {/* Header */}
             <div className="text-center mb-6">
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 mb-4 shadow-lg shadow-amber-500/25">
-                <CreditCard className="w-7 h-7 text-neutral-950" />
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-amber-100 text-amber-800 mb-3 font-bold">
+                <CreditCard className="w-6 h-6" />
               </div>
-              <h3 className="text-2xl font-black text-white tracking-tight">
+              <h3 className="text-xl font-bold text-slate-900 tracking-tight">
                 Checkout POS Barbershop
               </h3>
-              <p className="text-neutral-400 text-xs sm:text-sm mt-1">
+              <p className="text-slate-500 text-xs mt-1">
                 Lisensi seumur hidup tanpa biaya langganan bulanan
               </p>
-              <div className="mt-3 inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-1.5">
-                <span className="text-amber-400 font-extrabold text-lg">
+              <div className="mt-3 inline-flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-full px-4 py-1">
+                <span className="text-amber-800 font-extrabold text-base">
                   Rp 50.000
                 </span>
-                <span className="text-neutral-500 text-xs line-through">
+                <span className="text-slate-400 text-xs line-through">
                   Rp 150.000
                 </span>
-                <span className="text-[10px] bg-red-500/20 text-red-400 px-1.5 py-0.5 rounded font-bold uppercase">
-                  Diskon 67%
+                <span className="text-[10px] bg-red-100 text-red-700 px-1.5 py-0.5 rounded font-bold uppercase">
+                  Hemat 67%
                 </span>
               </div>
             </div>
@@ -183,54 +179,58 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
                 animate={{ opacity: 1, y: 0 }}
                 className="space-y-4"
               >
-                <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs leading-relaxed flex items-start gap-3">
-                  <Info className="w-5 h-5 shrink-0 text-amber-400 mt-0.5" />
+                <div className="p-4 rounded-xl bg-amber-50 border border-amber-200 text-xs text-slate-700 leading-relaxed flex items-start gap-3">
+                  <Info className="w-5 h-5 shrink-0 text-amber-600 mt-0.5" />
                   <div>
-                    <p className="font-bold mb-1">Mode Preview / Prototype</p>
-                    <p className="text-neutral-300">
-                      Form berhasil diproses dengan Order ID:{" "}
-                      <span className="font-mono text-amber-300 font-semibold">{demoOrderId}</span>.
-                      Silakan pilih opsi uji coba alur di bawah ini:
+                    <p className="font-bold text-slate-900 mb-1">
+                      Mode Preview / Prototype
+                    </p>
+                    <p className="text-slate-600">
+                      Form pesanan berhasil dibuat dengan Order ID:{" "}
+                      <span className="font-mono text-amber-800 font-semibold">
+                        {demoOrderId}
+                      </span>
+                      . Silakan pilih opsi pengujian:
                     </p>
                   </div>
                 </div>
 
-                <div className="space-y-3 pt-2">
+                <div className="space-y-2.5 pt-1">
                   <button
                     type="button"
                     onClick={handleSimulateSuccess}
-                    className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 transition-all"
+                    className="w-full py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-xs transition-colors"
                   >
                     <Sparkles className="w-4 h-4" />
-                    <span>Simulasi Sukses & Buka Halaman Download</span>
+                    <span>Simulasi Sukses & Halaman Download APK</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
 
                   <button
                     type="button"
                     onClick={handlePayViaWhatsApp}
-                    className="w-full py-3.5 px-4 rounded-xl bg-[#25D366] hover:bg-[#20BD5A] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-green-500/20 transition-all"
+                    className="w-full py-3.5 px-4 rounded-xl bg-[#25D366] hover:bg-[#20BD5A] text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-xs transition-colors"
                   >
                     <MessageCircle className="w-4 h-4" />
-                    <span>Lanjutkan Pembayaran via WhatsApp</span>
+                    <span>Kirim Pesanan ke WhatsApp Admin</span>
                   </button>
                 </div>
 
                 <button
                   type="button"
                   onClick={() => setDemoOrderId(null)}
-                  className="w-full text-center text-xs text-neutral-400 hover:text-white pt-2 transition-colors"
+                  className="w-full text-center text-xs text-slate-500 hover:text-slate-900 pt-2 transition-colors"
                 >
                   &larr; Kembali ke Form
                 </button>
               </motion.div>
             ) : (
               /* Regular Checkout Form */
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-3.5">
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-xs font-semibold uppercase tracking-wider text-neutral-300 mb-1.5"
+                    className="block text-xs font-semibold text-slate-700 mb-1"
                   >
                     Nama Lengkap
                   </label>
@@ -242,7 +242,7 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
                     onChange={(e) =>
                       setFormData({ ...formData, name: e.target.value })
                     }
-                    className="w-full px-4 py-3 bg-neutral-800/90 border border-neutral-700/80 rounded-xl text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500 transition-all text-sm"
+                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-500 transition-all text-sm"
                     placeholder="Contoh: Budi Santoso"
                   />
                 </div>
@@ -250,7 +250,7 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-xs font-semibold uppercase tracking-wider text-neutral-300 mb-1.5"
+                    className="block text-xs font-semibold text-slate-700 mb-1"
                   >
                     Alamat Email (Untuk Lisensi)
                   </label>
@@ -262,7 +262,7 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
                     }
-                    className="w-full px-4 py-3 bg-neutral-800/90 border border-neutral-700/80 rounded-xl text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500 transition-all text-sm"
+                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-500 transition-all text-sm"
                     placeholder="nama@email.com"
                   />
                 </div>
@@ -270,7 +270,7 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
                 <div>
                   <label
                     htmlFor="whatsapp"
-                    className="block text-xs font-semibold uppercase tracking-wider text-neutral-300 mb-1.5"
+                    className="block text-xs font-semibold text-slate-700 mb-1"
                   >
                     Nomor WhatsApp Aktif
                   </label>
@@ -282,13 +282,13 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
                     onChange={(e) =>
                       setFormData({ ...formData, whatsapp: e.target.value })
                     }
-                    className="w-full px-4 py-3 bg-neutral-800/90 border border-neutral-700/80 rounded-xl text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500 transition-all text-sm"
+                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-500 transition-all text-sm"
                     placeholder="081234567890"
                   />
                 </div>
 
                 {error && (
-                  <div className="p-3 rounded-xl bg-red-950/60 border border-red-500/40 text-red-300 text-xs text-center">
+                  <div className="p-3 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs text-center">
                     {error}
                   </div>
                 )}
@@ -296,24 +296,24 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full py-4 px-6 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 hover:from-amber-500 hover:via-amber-600 hover:to-amber-700 text-neutral-950 font-black text-base rounded-xl transition-all duration-300 shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer mt-2"
+                  className="w-full py-3.5 px-6 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-sm rounded-xl transition-all duration-150 shadow-xs disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer mt-1"
                 >
                   {isLoading ? (
                     <>
-                      <Loader2 className="w-5 h-5 animate-spin text-neutral-950" />
+                      <Loader2 className="w-4 h-4 animate-spin text-slate-950" />
                       <span>Menyiapkan Pembayaran...</span>
                     </>
                   ) : (
                     <>
-                      <Sparkles className="w-5 h-5" />
+                      <Sparkles className="w-4 h-4" />
                       <span>Bayar Sekarang — Rp 50.000</span>
                     </>
                   )}
                 </button>
 
-                <div className="flex items-center justify-center gap-2 text-xs text-neutral-400 pt-1">
-                  <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                  <span>Garansi uang kembali 7 hari • Enkripsi 256-bit</span>
+                <div className="flex items-center justify-center gap-1.5 text-xs text-slate-500 pt-1">
+                  <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                  <span>Garansi uang kembali 7 hari • Enkripsi aman</span>
                 </div>
               </form>
             )}

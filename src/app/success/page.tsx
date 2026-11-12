@@ -12,108 +12,70 @@ function SuccessContent() {
   const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6281234567890"; // TODO: Ganti nomor WA
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center p-4">
-      {/* Background glow */}
-      <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-green-500/10 rounded-full blur-[150px]" />
-      </div>
-
+    <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
       <motion.div
-        initial={{ opacity: 0, y: 30, scale: 0.95 }}
+        initial={{ opacity: 0, y: 20, scale: 0.98 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="relative max-w-lg w-full bg-gradient-to-b from-neutral-900 to-neutral-950 border border-neutral-800 rounded-3xl p-8 text-center shadow-2xl"
+        transition={{ duration: 0.4 }}
+        className="relative max-w-md w-full bg-white border border-slate-200 rounded-3xl p-7 sm:p-8 text-center shadow-xl text-slate-900"
       >
         {/* Success icon */}
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ delay: 0.3, type: "spring", damping: 15 }}
-          className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-500/20 border border-green-500/30 mb-6"
-        >
-          <CheckCircle2 className="w-10 h-10 text-green-400" />
-        </motion.div>
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 mb-5">
+          <CheckCircle2 className="w-9 h-9" />
+        </div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="text-2xl md:text-3xl font-bold text-white mb-3"
-        >
-          Pembayaran Berhasil! 🎉
-        </motion.h1>
+        <h1 className="text-2xl font-black text-slate-900 mb-2">
+          Pembayaran Dikonfirmasi! 🎉
+        </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-          className="text-gray-400 mb-2"
-        >
-          Terima kasih telah membeli POS Barbershop!
-        </motion.p>
+        <p className="text-slate-600 text-sm mb-2">
+          Terima kasih telah bergabung bersama POS Barbershop.
+        </p>
 
         {orderId && (
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="text-sm text-gray-500 mb-6"
-          >
-            Order ID: <span className="text-gray-300 font-mono">{orderId}</span>
-          </motion.p>
+          <p className="text-xs text-slate-400 mb-6 font-mono">
+            Order ID: <span className="font-bold text-slate-700">{orderId}</span>
+          </p>
         )}
 
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7 }}
-          className="space-y-3 mb-8"
-        >
-          {/* Download button */}
+        {/* Buttons */}
+        <div className="space-y-3 mb-6">
           <a
-            href="#" // TODO: Ganti dengan link download APK real
-            className="flex items-center justify-center gap-2 w-full py-3.5 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 hover:from-amber-500 hover:via-amber-600 hover:to-amber-700 text-black font-bold rounded-xl transition-all duration-300 shadow-lg shadow-amber-500/25"
+            href="#" // TODO: Ganti link APK
+            className="flex items-center justify-center gap-2 w-full py-3.5 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold rounded-xl transition-colors shadow-xs text-sm"
           >
-            <Download className="w-5 h-5" />
-            Download APK Sekarang
+            <Download className="w-4 h-4" />
+            <span>Download File APK Sekarang</span>
           </a>
 
-          {/* WhatsApp button */}
           <a
-            href={`https://wa.me/${waNumber}?text=Halo%2C%20saya%20sudah%20membeli%20POS%20Barbershop.%20Order%20ID%3A%20${orderId || ""}%0AMohon%20bantu%20proses%20pengiriman%20APK.%20Terima%20kasih!`}
+            href={`https://wa.me/${waNumber}?text=Halo%20Admin%2C%20saya%20sudah%20membeli%20POS%20Barbershop%20dengan%20Order%20ID%3A%20${orderId || ""}.%20Mohon%20bantuannya.`}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 w-full py-3.5 bg-[#25D366] hover:bg-[#20BD5A] text-white font-bold rounded-xl transition-all duration-300"
+            className="flex items-center justify-center gap-2 w-full py-3.5 bg-[#25D366] hover:bg-[#20BD5A] text-white font-bold rounded-xl transition-colors text-sm shadow-xs"
           >
-            <MessageCircle className="w-5 h-5" />
-            Hubungi via WhatsApp
+            <MessageCircle className="w-4 h-4" />
+            <span>Konfirmasi & Bantuan via WhatsApp</span>
           </a>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
-          className="bg-neutral-800/50 border border-neutral-700 rounded-xl p-4 mb-6"
-        >
-          <h3 className="text-sm font-semibold text-white mb-2">
-            📱 Langkah Selanjutnya:
-          </h3>
-          <ol className="text-left text-sm text-gray-400 space-y-1.5">
-            <li>1. Download file APK di atas</li>
-            <li>2. Buka file APK di HP Android kamu</li>
-            <li>3. Izinkan instalasi dari sumber tidak dikenal</li>
-            <li>4. Install dan buka aplikasi POS Barbershop</li>
-            <li>5. Mulai kelola barbershop kamu! 🚀</li>
-          </ol>
-        </motion.div>
+        {/* Installation Steps */}
+        <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 text-left text-xs text-slate-600 space-y-1.5 mb-6">
+          <p className="font-bold text-slate-800 mb-1">
+            📱 Cara Install di HP Android:
+          </p>
+          <p>1. Klik tombol download APK di atas.</p>
+          <p>2. Buka file hasil unduhan di notifikasi atau folder Download.</p>
+          <p>3. Izinkan &ldquo;Install dari sumber ini&rdquo; jika diminta.</p>
+          <p>4. Buka aplikasi dan kasir Anda langsung siap dipakai!</p>
+        </div>
 
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm"
+          className="inline-flex items-center gap-2 text-slate-500 hover:text-slate-900 transition-colors text-xs font-semibold"
         >
-          <ArrowLeft className="w-4 h-4" />
-          Kembali ke Halaman Utama
+          <ArrowLeft className="w-3.5 h-3.5" />
+          <span>Kembali ke Halaman Utama</span>
         </Link>
       </motion.div>
     </div>
@@ -124,8 +86,8 @@ export default function SuccessPage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-amber-500" />
+        <div className="min-h-screen bg-slate-50 flex items-center justify-center text-slate-500 text-sm">
+          Memuat...
         </div>
       }
     >

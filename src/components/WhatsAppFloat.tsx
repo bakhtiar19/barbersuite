@@ -41,7 +41,7 @@ export default function WhatsAppFloat() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             aria-label="Kembali ke atas"
-            className="pointer-events-auto w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-neutral-900/90 hover:bg-neutral-800 text-amber-400 border border-neutral-700 hover:border-amber-500/50 flex items-center justify-center shadow-xl backdrop-blur-md transition-colors"
+            className="pointer-events-auto w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 flex items-center justify-center shadow-md transition-colors"
           >
             <ArrowUp className="w-5 h-5" />
           </motion.button>
