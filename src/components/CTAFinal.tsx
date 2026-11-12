@@ -55,7 +55,7 @@ export default function CTAFinal() {
         {/* Headline */}
         <h2 className="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight leading-tight">
           Jangan Sampai Barbershop Sebelah{" "}
-          <span className="text-amber-700 underline decoration-amber-400 decoration-wavy">
+          <span className="text-amber-700 underline decoration-amber-400 decoration-2">
             Lebih Maju
           </span>{" "}
           dari Anda!
@@ -125,7 +125,20 @@ export default function CTAFinal() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-lg mx-auto">
           <a
             href="#pricing"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-amber-400 via-amber-400 to-yellow-400 hover:from-amber-500 hover:to-amber-400 text-stone-950 font-black text-base shadow-lg shadow-amber-500/25 hover:shadow-xl transition-all active:scale-98"
+            onClick={(e) => {
+              e.preventDefault();
+              const el = document.querySelector("#pricing");
+              if (el) {
+                const navbarHeight = 85;
+                const elementPosition = el.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+                window.scrollTo({
+                  top: Math.max(0, offsetPosition),
+                  behavior: "smooth",
+                });
+              }
+            }}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-amber-400 via-amber-400 to-yellow-400 hover:from-amber-500 hover:to-amber-400 text-stone-950 font-black text-base shadow-lg shadow-amber-500/25 hover:shadow-xl transition-all active:scale-98 cursor-pointer"
           >
             <Zap className="w-4 h-4 fill-stone-950" />
             <span>Beli Sekarang — Rp 50.000</span>
@@ -133,7 +146,7 @@ export default function CTAFinal() {
           </a>
 
           <a
-            href="https://wa.me/6281234567890?text=Halo%20Admin%2C%20saya%20tertarik%20dengan%20POS%20Barbershop%20dan%20mau%20konsultasi%20dulu"
+            href="https://wa.me/6281234567890?text=Halo%20Admin%2C%20saya%20tertarik%20dengan%20Barber%20Suite%20dan%20mau%20konsultasi%20dulu"
             target="_blank"
             rel="noopener noreferrer"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-white hover:bg-stone-50 text-stone-800 font-bold text-base border-2 border-stone-200 shadow-xs transition-colors"

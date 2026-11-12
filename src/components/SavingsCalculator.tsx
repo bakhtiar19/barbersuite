@@ -2,15 +2,16 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Calculator, ArrowRight, CheckCircle2, TrendingUp, Sparkles, DollarSign } from "lucide-react";
+import { Calculator, ArrowRight, Sparkles, DollarSign } from "lucide-react";
 
 export default function SavingsCalculator() {
   const [chairs, setChairs] = useState<number>(2); // Default 2 kursi barber
   const [competitorMonthly, setCompetitorMonthly] = useState<number>(250000); // 250k/bulan
 
-  const annualCompetitorCost = competitorMonthly * 12;
-  const posBarbershopCost = 50000;
-  const annualSavings = annualCompetitorCost - posBarbershopCost;
+  // Kalkulasi dinamis: Jumlah kursi * biaya bulanan * 12 bulan
+  const annualCompetitorCost = competitorMonthly * chairs * 12;
+  const barberSuiteCost = 50000; // Sekali bayar seumur hidup
+  const annualSavings = annualCompetitorCost - barberSuiteCost;
 
   return (
     <section className="py-24 bg-gradient-to-b from-[#f5f2eb] via-[#faf8f5] to-[#f5f2eb] border-y border-stone-200/80">
@@ -47,6 +48,7 @@ export default function SavingsCalculator() {
                     {chairs} Kursi Barber
                   </span>
                 </div>
+
                 <input
                   type="range"
                   min="1"
@@ -54,15 +56,26 @@ export default function SavingsCalculator() {
                   step="1"
                   value={chairs}
                   onChange={(e) => setChairs(Number(e.target.value))}
-                  className="w-full h-2.5 bg-stone-200 rounded-lg appearance-none cursor-pointer accent-amber-500"
+                  onInput={(e) => setChairs(Number((e.target as HTMLInputElement).value))}
+                  className="w-full h-3 bg-stone-200 rounded-lg appearance-none cursor-pointer accent-amber-500"
                 />
-                <div className="flex justify-between text-[10px] text-stone-400 mt-1 font-semibold">
-                  <span>1 Kursi</span>
-                  <span>2 Kursi</span>
-                  <span>3 Kursi</span>
-                  <span>4 Kursi</span>
-                  <span>5 Kursi</span>
-                  <span>6 Kursi</span>
+
+                {/* Quick-select pills for chairs */}
+                <div className="flex justify-between text-[11px] text-stone-500 mt-2 font-semibold">
+                  {[1, 2, 3, 4, 5, 6].map((num) => (
+                    <button
+                      key={num}
+                      type="button"
+                      onClick={() => setChairs(num)}
+                      className={`px-2 py-0.5 rounded-md cursor-pointer transition-all ${
+                        chairs === num
+                          ? "bg-amber-400 text-stone-950 font-black shadow-2xs scale-105"
+                          : "text-stone-500 hover:text-stone-900 hover:bg-stone-100"
+                      }`}
+                    >
+                      {num} Kursi
+                    </button>
+                  ))}
                 </div>
               </div>
 
@@ -94,9 +107,12 @@ export default function SavingsCalculator() {
               </div>
 
               {/* Comparison Breakdown Details */}
-              <div className="space-y-2 pt-2 border-t border-stone-100 text-xs text-stone-600">
+              <div className="space-y-2 pt-3 border-t border-stone-100 text-xs text-stone-600">
                 <div className="flex justify-between">
-                  <span>Biaya Software Lain (1 Tahun):</span>
+                  <span>
+                    Biaya Software Lain ({chairs} Kursi x Rp{" "}
+                    {competitorMonthly.toLocaleString("id-ID")}/bln x 12 bln):
+                  </span>
                   <span className="font-bold text-stone-800 line-through">
                     Rp {annualCompetitorCost.toLocaleString("id-ID")}
                   </span>
@@ -121,9 +137,15 @@ export default function SavingsCalculator() {
                   UANG YANG ANDA HEMAT DI TAHUN PERTAMA
                 </span>
 
-                <div className="text-4xl sm:text-5xl font-black text-stone-950 tracking-tight my-2">
+                <motion.div
+                  key={`${chairs}-${competitorMonthly}`}
+                  initial={{ scale: 0.95, opacity: 0.8 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.2 }}
+                  className="text-4xl sm:text-5xl font-black text-stone-950 tracking-tight my-2"
+                >
                   Rp {annualSavings.toLocaleString("id-ID")}
-                </div>
+                </motion.div>
 
                 <p className="text-xs text-stone-800 font-medium leading-relaxed mt-2">
                   Uang penghematan ini bisa Anda gunakan untuk membeli clipper baru,

@@ -59,12 +59,15 @@ export default function Pricing({ onOpenPayment }: PricingProps) {
   };
 
   return (
-    <section id="harga" className="py-24 bg-[#f5f2eb] border-y border-stone-200/90">
-      <div id="pricing" className="scroll-mt-24" />
+    <section
+      id="pricing"
+      className="py-24 bg-[#f5f2eb] border-y border-stone-200/90 scroll-mt-24 relative"
+    >
+      <div id="harga" className="scroll-mt-24" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-xl mx-auto mb-14">
+        <div className="text-center max-w-xl mx-auto mb-16">
           <div className="inline-flex items-center gap-1.5 px-4 py-1 rounded-full bg-amber-200 text-amber-950 text-xs font-black mb-3 border border-amber-300">
             <Zap className="w-3.5 h-3.5 text-amber-700" />
             <span>PENAWARAN PELUNCURAN RESMI</span>
@@ -86,11 +89,11 @@ export default function Pricing({ onOpenPayment }: PricingProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="relative bg-white rounded-[32px] border-2 border-amber-400 p-7 sm:p-12 shadow-xl max-w-xl mx-auto overflow-hidden"
+          className="relative bg-white rounded-[32px] border-2 border-amber-400 p-7 sm:p-12 shadow-xl max-w-xl mx-auto mt-6"
         >
-          {/* Top Banner Discount Badge */}
-          <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-            <span className="inline-flex items-center gap-1.5 px-5 py-1.5 rounded-full bg-gradient-to-r from-red-600 via-orange-600 to-amber-600 text-white font-black text-xs uppercase tracking-wide shadow-md">
+          {/* Top Banner Discount Badge (Never clipped) */}
+          <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20">
+            <span className="inline-flex items-center gap-1.5 px-5 py-1.5 rounded-full bg-gradient-to-r from-red-600 via-orange-600 to-amber-600 text-white font-black text-xs uppercase tracking-wide shadow-md whitespace-nowrap">
               <span>🔥 DISKON 67% — PROMO SPESIAL</span>
             </span>
           </div>

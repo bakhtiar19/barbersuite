@@ -84,7 +84,14 @@ export default function HeroSection() {
     e.preventDefault();
     const pricingElement = document.querySelector("#pricing");
     if (pricingElement) {
-      pricingElement.scrollIntoView({ behavior: "smooth" });
+      const navbarHeight = 85;
+      const elementPosition = pricingElement.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+
+      window.scrollTo({
+        top: Math.max(0, offsetPosition),
+        behavior: "smooth",
+      });
     }
   };
 
