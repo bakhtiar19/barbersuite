@@ -10,6 +10,7 @@ const TESTIMONIALS = [
     barbershop: "Gentleman Barbershop",
     city: "Jakarta Selatan",
     rating: 5,
+    avatarColor: "bg-amber-500 text-stone-950",
     text: "Sebelumnya saya catat omset di buku tulis dan sering selisih uang kas. Sejak pakai POS Barbershop, pembukuan rapi banget dan kapster bisa lihat bagian komisinya sendiri.",
   },
   {
@@ -17,6 +18,7 @@ const TESTIMONIALS = [
     barbershop: "Urban Cut Studio",
     city: "Surabaya",
     rating: 5,
+    avatarColor: "bg-blue-600 text-white",
     text: "Aplikasinya simpel sekali. Kapster saya yang gaptek langsung paham cuma dalam 5 menit. Harga Rp 50.000 sekali bayar ini bener-bener penolong pemilik UMKM.",
   },
   {
@@ -24,6 +26,7 @@ const TESTIMONIALS = [
     barbershop: "Kings Barbershop",
     city: "Bandung",
     rating: 5,
+    avatarColor: "bg-emerald-600 text-white",
     text: "Fitur laporan keuangannya sangat membantu. Setiap malam saya bisa cek omset harian langsung dari HP tanpa repot menghitung nota manual satu per satu.",
   },
   {
@@ -31,6 +34,7 @@ const TESTIMONIALS = [
     barbershop: "Fresh Cut Barbershop",
     city: "Yogyakarta",
     rating: 5,
+    avatarColor: "bg-purple-600 text-white",
     text: "Dulu pernah langganan aplikasi kasir lain Rp 200.000 per bulan, lumayan membebani. POS Barbershop ini bayar Rp 50.000 sekali aja, fiturnya malah lebih pas buat barbershop.",
   },
   {
@@ -38,6 +42,7 @@ const TESTIMONIALS = [
     barbershop: "The Blade Barbershop",
     city: "Medan",
     rating: 5,
+    avatarColor: "bg-rose-600 text-white",
     text: "Support WhatsApp-nya responsif sekali saat saya tanya cara atur harga layanan. Dibimbing sampai paham. Sangat recommended!",
   },
   {
@@ -45,31 +50,33 @@ const TESTIMONIALS = [
     barbershop: "Classic Cuts",
     city: "Semarang",
     rating: 5,
+    avatarColor: "bg-teal-600 text-white",
     text: "Database nomor WA pelanggan berguna banget buat kirim promo pas tanggal tua. Tamu jadi rajin balik potong rambut ke sini.",
   },
 ];
 
 export default function Testimonials() {
   return (
-    <section id="testimoni" className="py-24 bg-white">
+    <section id="testimoni" className="py-24 bg-[#faf8f5]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 text-slate-800 text-xs font-bold mb-3">
-            <MessageSquare className="w-3.5 h-3.5 text-amber-600" />
-            <span>TESTIMONI PENGGUNA</span>
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold mb-3 border border-amber-200">
+            <MessageSquare className="w-3.5 h-3.5 text-amber-700" />
+            <span>KATA MEREKA YANG SUDAH PAKAI</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Cerita Sukses Rekan Barbershop
+          <h2 className="text-3xl sm:text-4xl font-black text-stone-900 tracking-tight">
+            Cerita Nyata Pemilik Barbershop
           </h2>
 
-          <p className="mt-3 text-slate-600 text-sm sm:text-base">
-            Ratusan pemilik barbershop di Indonesia telah beralih ke kasir digital kami.
+          <p className="mt-3 text-stone-600 text-sm sm:text-base">
+            Bergabunglah bersama ratusan pemilik barbershop yang telah menaikkan level
+            bisnisnya.
           </p>
         </div>
 
-        {/* 6 Cards Grid (3 columns on desktop, 1 on mobile) */}
+        {/* 6 Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {TESTIMONIALS.map((t, idx) => (
             <motion.div
@@ -78,7 +85,7 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.35, delay: idx * 0.08 }}
-              className="bg-slate-50/60 border border-slate-200/90 rounded-2xl p-6 flex flex-col justify-between shadow-xs hover:shadow-sm transition-shadow"
+              className="bg-white border border-stone-200/90 rounded-2xl p-6 flex flex-col justify-between shadow-xs hover:shadow-md transition-all"
             >
               <div>
                 {/* Stars */}
@@ -88,19 +95,21 @@ export default function Testimonials() {
                   ))}
                 </div>
 
-                <p className="text-sm text-slate-700 leading-relaxed italic mb-6">
+                <p className="text-sm text-stone-700 leading-relaxed italic mb-6">
                   &ldquo;{t.text}&rdquo;
                 </p>
               </div>
 
               {/* Author Info */}
-              <div className="flex items-center gap-3 pt-3 border-t border-slate-200/70">
-                <div className="w-9 h-9 rounded-full bg-amber-200 text-amber-900 font-bold flex items-center justify-center text-xs">
+              <div className="flex items-center gap-3 pt-3 border-t border-stone-100">
+                <div
+                  className={`w-9 h-9 rounded-full ${t.avatarColor} font-black flex items-center justify-center text-xs shadow-2xs`}
+                >
                   {t.name.substring(0, 2).toUpperCase()}
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-slate-900">{t.name}</h4>
-                  <p className="text-[11px] text-slate-500">
+                  <h4 className="text-xs font-bold text-stone-900">{t.name}</h4>
+                  <p className="text-[11px] text-stone-500 font-medium">
                     {t.barbershop} • {t.city}
                   </p>
                 </div>

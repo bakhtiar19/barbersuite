@@ -12,29 +12,29 @@ function SuccessContent() {
   const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6281234567890"; // TODO: Ganti nomor WA
 
   return (
-    <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-[#FAF8F5] flex items-center justify-center p-4">
       <motion.div
         initial={{ opacity: 0, y: 20, scale: 0.98 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.4 }}
-        className="relative max-w-md w-full bg-white border border-slate-200 rounded-3xl p-7 sm:p-8 text-center shadow-xl text-slate-900"
+        className="relative max-w-md w-full bg-white border-2 border-stone-200 rounded-[28px] p-7 sm:p-8 text-center shadow-xl text-stone-900"
       >
         {/* Success icon */}
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 mb-5">
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-emerald-100 text-emerald-700 mb-5 border border-emerald-200">
           <CheckCircle2 className="w-9 h-9" />
         </div>
 
-        <h1 className="text-2xl font-black text-slate-900 mb-2">
-          Pembayaran Dikonfirmasi! 🎉
+        <h1 className="text-2xl font-black text-stone-900 mb-2">
+          Pembayaran Berhasil! 🎉
         </h1>
 
-        <p className="text-slate-600 text-sm mb-2">
+        <p className="text-stone-600 text-sm mb-2 font-normal">
           Terima kasih telah bergabung bersama POS Barbershop.
         </p>
 
         {orderId && (
-          <p className="text-xs text-slate-400 mb-6 font-mono">
-            Order ID: <span className="font-bold text-slate-700">{orderId}</span>
+          <p className="text-xs text-stone-400 mb-6 font-mono">
+            Order ID: <span className="font-bold text-stone-800">{orderId}</span>
           </p>
         )}
 
@@ -42,7 +42,7 @@ function SuccessContent() {
         <div className="space-y-3 mb-6">
           <a
             href="#" // TODO: Ganti link APK
-            className="flex items-center justify-center gap-2 w-full py-3.5 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold rounded-xl transition-colors shadow-xs text-sm"
+            className="flex items-center justify-center gap-2 w-full py-3.5 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-stone-950 font-black rounded-xl transition-all shadow-md shadow-amber-500/20 text-sm"
           >
             <Download className="w-4 h-4" />
             <span>Download File APK Sekarang</span>
@@ -60,19 +60,19 @@ function SuccessContent() {
         </div>
 
         {/* Installation Steps */}
-        <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 text-left text-xs text-slate-600 space-y-1.5 mb-6">
-          <p className="font-bold text-slate-800 mb-1">
-            📱 Cara Install di HP Android:
+        <div className="bg-[#FAF8F5] border border-stone-200 rounded-2xl p-4 text-left text-xs text-stone-600 space-y-1.5 mb-6">
+          <p className="font-bold text-stone-800 mb-1">
+            📱 Cara Pasang di HP Android:
           </p>
           <p>1. Klik tombol download APK di atas.</p>
-          <p>2. Buka file hasil unduhan di notifikasi atau folder Download.</p>
-          <p>3. Izinkan &ldquo;Install dari sumber ini&rdquo; jika diminta.</p>
-          <p>4. Buka aplikasi dan kasir Anda langsung siap dipakai!</p>
+          <p>2. Buka file hasil unduhan di notifikasi atau folder File Manager.</p>
+          <p>3. Izinkan &ldquo;Install dari sumber ini&rdquo; jika diminta sistem Android.</p>
+          <p>4. Buka aplikasi dan kasir barbershop Anda langsung aktif!</p>
         </div>
 
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-slate-500 hover:text-slate-900 transition-colors text-xs font-semibold"
+          className="inline-flex items-center gap-2 text-stone-500 hover:text-stone-900 transition-colors text-xs font-bold"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>Kembali ke Halaman Utama</span>
@@ -86,7 +86,7 @@ export default function SuccessPage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen bg-slate-50 flex items-center justify-center text-slate-500 text-sm">
+        <div className="min-h-screen bg-[#FAF8F5] flex items-center justify-center text-stone-500 text-sm">
           Memuat...
         </div>
       }

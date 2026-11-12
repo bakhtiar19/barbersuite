@@ -128,7 +128,7 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
           onClick={onClose}
         >
           {/* Backdrop */}
-          <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs" />
+          <div className="fixed inset-0 bg-stone-900/60 backdrop-blur-xs" />
 
           {/* Modal Card */}
           <motion.div
@@ -137,12 +137,12 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
             exit={{ opacity: 0, scale: 0.95, y: 15 }}
             transition={{ duration: 0.2 }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-md bg-white border border-slate-200 rounded-3xl p-6 sm:p-7 shadow-2xl z-10 my-8 text-slate-900"
+            className="relative w-full max-w-md bg-[#FAF8F5] border-2 border-stone-300 rounded-[28px] p-6 sm:p-7 shadow-2xl z-10 my-8 text-stone-900"
           >
             {/* Close button */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 p-2 text-slate-400 hover:text-slate-700 transition-colors rounded-full hover:bg-slate-100"
+              className="absolute top-4 right-4 p-2 text-stone-400 hover:text-stone-700 transition-colors rounded-full hover:bg-stone-200"
               aria-label="Tutup modal"
             >
               <X className="w-5 h-5" />
@@ -150,23 +150,23 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
 
             {/* Header */}
             <div className="text-center mb-6">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-amber-100 text-amber-800 mb-3 font-bold">
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-amber-200 text-amber-950 mb-3 font-black shadow-xs">
                 <CreditCard className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 tracking-tight">
-                Checkout POS Barbershop
+              <h3 className="text-xl font-black text-stone-900 tracking-tight">
+                Beli Lisensi POS Barbershop
               </h3>
-              <p className="text-slate-500 text-xs mt-1">
+              <p className="text-stone-500 text-xs mt-1 font-medium">
                 Lisensi seumur hidup tanpa biaya langganan bulanan
               </p>
-              <div className="mt-3 inline-flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-full px-4 py-1">
-                <span className="text-amber-800 font-extrabold text-base">
+              <div className="mt-3 inline-flex items-center gap-2 bg-amber-100/80 border border-amber-300 rounded-full px-4 py-1">
+                <span className="text-amber-950 font-black text-base">
                   Rp 50.000
                 </span>
-                <span className="text-slate-400 text-xs line-through">
+                <span className="text-stone-400 text-xs line-through">
                   Rp 150.000
                 </span>
-                <span className="text-[10px] bg-red-100 text-red-700 px-1.5 py-0.5 rounded font-bold uppercase">
+                <span className="text-[10px] bg-red-100 text-red-700 px-2 py-0.5 rounded-full font-bold uppercase">
                   Hemat 67%
                 </span>
               </div>
@@ -179,18 +179,18 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
                 animate={{ opacity: 1, y: 0 }}
                 className="space-y-4"
               >
-                <div className="p-4 rounded-xl bg-amber-50 border border-amber-200 text-xs text-slate-700 leading-relaxed flex items-start gap-3">
-                  <Info className="w-5 h-5 shrink-0 text-amber-600 mt-0.5" />
+                <div className="p-4 rounded-2xl bg-amber-100/70 border border-amber-300 text-xs text-stone-800 leading-relaxed flex items-start gap-3">
+                  <Info className="w-5 h-5 shrink-0 text-amber-700 mt-0.5" />
                   <div>
-                    <p className="font-bold text-slate-900 mb-1">
+                    <p className="font-bold text-stone-900 mb-1">
                       Mode Preview / Prototype
                     </p>
-                    <p className="text-slate-600">
+                    <p className="text-stone-600 font-normal">
                       Form pesanan berhasil dibuat dengan Order ID:{" "}
-                      <span className="font-mono text-amber-800 font-semibold">
+                      <span className="font-mono text-amber-900 font-bold">
                         {demoOrderId}
                       </span>
-                      . Silakan pilih opsi pengujian:
+                      . Silakan pilih opsi uji coba:
                     </p>
                   </div>
                 </div>
@@ -199,7 +199,7 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
                   <button
                     type="button"
                     onClick={handleSimulateSuccess}
-                    className="w-full py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-xs transition-colors"
+                    className="w-full py-3.5 px-4 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-xs transition-colors cursor-pointer"
                   >
                     <Sparkles className="w-4 h-4" />
                     <span>Simulasi Sukses & Halaman Download APK</span>
@@ -209,7 +209,7 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
                   <button
                     type="button"
                     onClick={handlePayViaWhatsApp}
-                    className="w-full py-3.5 px-4 rounded-xl bg-[#25D366] hover:bg-[#20BD5A] text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-xs transition-colors"
+                    className="w-full py-3.5 px-4 rounded-xl bg-[#25D366] hover:bg-[#20BD5A] text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-xs transition-colors cursor-pointer"
                   >
                     <MessageCircle className="w-4 h-4" />
                     <span>Kirim Pesanan ke WhatsApp Admin</span>
@@ -219,7 +219,7 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
                 <button
                   type="button"
                   onClick={() => setDemoOrderId(null)}
-                  className="w-full text-center text-xs text-slate-500 hover:text-slate-900 pt-2 transition-colors"
+                  className="w-full text-center text-xs text-stone-500 hover:text-stone-900 pt-2 transition-colors cursor-pointer"
                 >
                   &larr; Kembali ke Form
                 </button>
@@ -230,7 +230,7 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-xs font-semibold text-slate-700 mb-1"
+                    className="block text-xs font-bold text-stone-700 mb-1"
                   >
                     Nama Lengkap
                   </label>
@@ -242,7 +242,7 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
                     onChange={(e) =>
                       setFormData({ ...formData, name: e.target.value })
                     }
-                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-500 transition-all text-sm"
+                    className="w-full px-3.5 py-2.5 bg-white border border-stone-300 rounded-xl text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-500 transition-all text-sm font-medium"
                     placeholder="Contoh: Budi Santoso"
                   />
                 </div>
@@ -250,9 +250,9 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-xs font-semibold text-slate-700 mb-1"
+                    className="block text-xs font-bold text-stone-700 mb-1"
                   >
-                    Alamat Email (Untuk Lisensi)
+                    Alamat Email (Untuk Pengiriman Lisensi)
                   </label>
                   <input
                     type="email"
@@ -262,7 +262,7 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
                     }
-                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-500 transition-all text-sm"
+                    className="w-full px-3.5 py-2.5 bg-white border border-stone-300 rounded-xl text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-500 transition-all text-sm font-medium"
                     placeholder="nama@email.com"
                   />
                 </div>
@@ -270,7 +270,7 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
                 <div>
                   <label
                     htmlFor="whatsapp"
-                    className="block text-xs font-semibold text-slate-700 mb-1"
+                    className="block text-xs font-bold text-stone-700 mb-1"
                   >
                     Nomor WhatsApp Aktif
                   </label>
@@ -282,13 +282,13 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
                     onChange={(e) =>
                       setFormData({ ...formData, whatsapp: e.target.value })
                     }
-                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-500 transition-all text-sm"
+                    className="w-full px-3.5 py-2.5 bg-white border border-stone-300 rounded-xl text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-500 transition-all text-sm font-medium"
                     placeholder="081234567890"
                   />
                 </div>
 
                 {error && (
-                  <div className="p-3 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs text-center">
+                  <div className="p-3 rounded-xl bg-red-100 border border-red-200 text-red-800 text-xs text-center font-medium">
                     {error}
                   </div>
                 )}
@@ -296,11 +296,11 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full py-3.5 px-6 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-sm rounded-xl transition-all duration-150 shadow-xs disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer mt-1"
+                  className="w-full py-3.5 px-6 bg-gradient-to-r from-amber-400 via-amber-400 to-yellow-400 hover:from-amber-500 hover:to-amber-400 text-stone-950 font-black text-sm rounded-xl transition-all duration-150 shadow-md shadow-amber-500/20 disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer mt-1"
                 >
                   {isLoading ? (
                     <>
-                      <Loader2 className="w-4 h-4 animate-spin text-slate-950" />
+                      <Loader2 className="w-4 h-4 animate-spin text-stone-950" />
                       <span>Menyiapkan Pembayaran...</span>
                     </>
                   ) : (
@@ -311,7 +311,7 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
                   )}
                 </button>
 
-                <div className="flex items-center justify-center gap-1.5 text-xs text-slate-500 pt-1">
+                <div className="flex items-center justify-center gap-1.5 text-xs text-stone-500 pt-1">
                   <ShieldCheck className="w-4 h-4 text-emerald-600" />
                   <span>Garansi uang kembali 7 hari • Enkripsi aman</span>
                 </div>
