@@ -146,7 +146,7 @@ export default function CTAFinal() {
           </a>
 
           <a
-            href="https://wa.me/6281234567890?text=Halo%20Admin%2C%20saya%20tertarik%20dengan%20Barber%20Suite%20dan%20mau%20konsultasi%20dulu"
+            href="https://wa.me/6282145773753?text=Halo%20Admin%2C%20saya%20tertarik%20dengan%20Barber%20Suite%20dan%20mau%20konsultasi%20dulu"
             target="_blank"
             rel="noopener noreferrer"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-white hover:bg-stone-50 text-stone-800 font-bold text-base border-2 border-stone-200 shadow-xs transition-colors"

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Scissors, MessageCircle, Mail, Globe, ShieldCheck } from "lucide-react";
 
 export default function Footer() {
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6281234567890"; // TODO: Ganti nomor WA
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6282145773753";
 
   return (
     <footer className="bg-[#f5f2eb] border-t border-stone-200 text-stone-600 py-12 text-sm">

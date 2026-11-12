@@ -8,7 +8,7 @@ export default function WhatsAppFloat() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [isBubbleOpen, setIsBubbleOpen] = useState(true);
 
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6281234567890"; // TODO: Ganti nomor WA
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6282145773753";
 
   useEffect(() => {
     const handleScroll = () => {

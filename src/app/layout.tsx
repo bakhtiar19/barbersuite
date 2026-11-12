@@ -135,12 +135,12 @@ const faqJsonLd = {
 const orgJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "POS Barbershop",
-  url: process.env.NEXT_PUBLIC_BASE_URL || "https://pos-barbershop.netlify.app",
-  logo: "/images/logo.png", // TODO: Ganti dengan logo real
+  name: "Barber Suite",
+  url: process.env.NEXT_PUBLIC_BASE_URL || "https://barbersuite.netlify.app",
+  logo: "/images/logo.png",
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: "+6281234567890", // TODO: Ganti nomor WA
+    telephone: "+6282145773753",
     contactType: "customer service",
     availableLanguage: "Indonesian",
   },

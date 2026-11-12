@@ -44,7 +44,7 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
   const [error, setError] = useState("");
   const [demoOrderId, setDemoOrderId] = useState<string | null>(null);
 
-  const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6281234567890"; // TODO: Ganti nomor WA
+  const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6282145773753";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

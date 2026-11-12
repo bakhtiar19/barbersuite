@@ -12,7 +12,7 @@ import {
   Lock,
 } from "lucide-react";
 
-const WHATSAPP_NUMBER = "6281234567890"; // TODO: Ganti nomor WA
+const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6282145773753";
 
 const FEATURES = [
   "Aplikasi Android Barber Suite Pro v4.2.0 Lengkap",

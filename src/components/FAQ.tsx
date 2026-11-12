@@ -118,7 +118,7 @@ export default function FAQ() {
             </p>
           </div>
           <a
-            href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya-tanya%20tentang%20aplikasi%20POS%20Barbershop"
+            href="https://wa.me/6282145773753?text=Halo%2C%20saya%20mau%20tanya-tanya%20tentang%20aplikasi%20Barber%20Suite"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-amber-400 hover:bg-amber-500 text-stone-950 font-black text-xs transition-colors shrink-0 shadow-xs"

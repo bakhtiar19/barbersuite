@@ -74,7 +74,7 @@ const SCREENS: ScreenMeta[] = [
 export default function HeroSection() {
   const [activeScreen, setActiveScreen] = useState<ScreenKey>("kasir");
 
-  const whatsappNumber = "6281234567890"; // TODO: Ganti nomor WA
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6282145773753";
   const whatsappMessage = encodeURIComponent(
     "Halo Admin Barber Suite, saya tertarik dengan aplikasi kasir Barber Suite (Rp 50.000). Mau tanya info lebih lanjut."
   );
