@@ -8,21 +8,20 @@ import { motion, AnimatePresence } from "framer-motion";
 interface NavItem {
   label: string;
   href: string;
+  badge?: string;
 }
 
 const NAV_ITEMS: NavItem[] = [
   { label: "Fitur", href: "#fitur" },
-  { label: "Tampilan", href: "#preview" },
+  { label: "Tampilan Nyata", href: "#preview" },
+  { label: "vs Moka POS", href: "#komparasi", badge: "Hemat 98%" },
   { label: "Harga", href: "#pricing" },
-  { label: "Testimoni", href: "#testimoni" },
   { label: "FAQ", href: "#faq" },
 ];
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const priceDisplay = "Rp 50.000";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,6 +61,9 @@ export default function Navbar() {
           : "bg-transparent py-4 sm:py-5"
       }`}
     >
+      {/* Barber Pole Strip Accent at very top of navbar */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-[repeating-linear-gradient(45deg,#dc2626,#dc2626_10px,#ffffff_10px,#ffffff_20px,#2563eb_20px,#2563eb_30px,#ffffff_30px,#ffffff_40px)] opacity-90" />
+
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -73,25 +75,30 @@ export default function Navbar() {
               <Scissors className="w-5 h-5 -rotate-45" />
             </div>
             <div className="flex flex-col">
-              <span className="text-lg font-black tracking-tight text-stone-900 flex items-center gap-1 leading-tight">
-                POS <span className="text-amber-600">Barbershop</span>
+              <span className="text-xl font-black tracking-tight text-stone-900 flex items-center gap-1.5 leading-tight">
+                Barber <span className="text-amber-600">Suite</span>
               </span>
-              <span className="text-[10px] tracking-wider uppercase text-stone-500 font-semibold">
-                Sistem Kasir Digital
+              <span className="text-[10px] tracking-wider uppercase text-stone-500 font-bold">
+                Kasir Barbershop Modern
               </span>
             </div>
           </Link>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-1 bg-stone-100/80 border border-stone-200/70 p-1.5 rounded-full px-4">
+          {/* Desktop Navigation Links (Moka POS style pill container) */}
+          <nav className="hidden md:flex items-center gap-1 bg-stone-100/90 border border-stone-200/80 p-1.5 rounded-full px-4">
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className="px-3.5 py-1 text-xs font-semibold text-stone-700 hover:text-stone-950 hover:bg-white rounded-full transition-all"
+                className="px-3.5 py-1 text-xs font-bold text-stone-700 hover:text-stone-950 hover:bg-white rounded-full transition-all flex items-center gap-1.5"
               >
-                {item.label}
+                <span>{item.label}</span>
+                {item.badge && (
+                  <span className="text-[9px] bg-red-600 text-white px-1.5 py-0.2 rounded-full font-black">
+                    {item.badge}
+                  </span>
+                )}
               </a>
             ))}
           </nav>
@@ -101,10 +108,10 @@ export default function Navbar() {
             <a
               href="#pricing"
               onClick={(e) => handleNavClick(e, "#pricing")}
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold text-stone-950 bg-amber-400 hover:bg-amber-300 border border-amber-500/30 transition-all shadow-sm active:scale-95"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black text-stone-950 bg-amber-400 hover:bg-amber-300 border border-amber-500/30 transition-all shadow-sm active:scale-95"
             >
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Beli Lisensi — {priceDisplay}</span>
+              <span>Beli Lisensi — Rp 50.000</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </a>
           </div>
@@ -127,7 +134,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Drawer */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -143,9 +150,14 @@ export default function Navbar() {
                   key={item.label}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className="py-2.5 text-base font-semibold text-stone-800 hover:text-amber-700 border-b border-stone-100 transition-colors"
+                  className="py-2.5 text-base font-bold text-stone-800 hover:text-amber-700 border-b border-stone-100 transition-colors flex items-center justify-between"
                 >
-                  {item.label}
+                  <span>{item.label}</span>
+                  {item.badge && (
+                    <span className="text-[10px] bg-red-600 text-white px-2 py-0.5 rounded-full font-bold">
+                      {item.badge}
+                    </span>
+                  )}
                 </a>
               ))}
 
@@ -153,10 +165,10 @@ export default function Navbar() {
                 <a
                   href="#pricing"
                   onClick={(e) => handleNavClick(e, "#pricing")}
-                  className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl text-sm font-bold text-stone-950 bg-amber-400 hover:bg-amber-300 shadow-sm"
+                  className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl text-sm font-black text-stone-950 bg-amber-400 hover:bg-amber-300 shadow-sm"
                 >
                   <Sparkles className="w-4 h-4" />
-                  <span>Beli Sekarang — {priceDisplay}</span>
+                  <span>Beli Barber Suite — Rp 50.000</span>
                 </a>
               </div>
             </div>

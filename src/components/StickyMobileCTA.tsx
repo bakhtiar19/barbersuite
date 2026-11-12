@@ -15,7 +15,7 @@ export default function StickyMobileCTA() {
           <div className="flex items-center gap-1.5">
             <Scissors className="w-3.5 h-3.5 text-amber-700" />
             <span className="text-xs font-black text-stone-900 tracking-wide">
-              POS Barbershop
+              Barber Suite Pro
             </span>
           </div>
           <div className="flex items-baseline gap-1.5 mt-0.5">

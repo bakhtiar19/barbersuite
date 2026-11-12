@@ -15,24 +15,21 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://pos-barbershop.netlify.app"),
-  title: "POS Barbershop — Aplikasi Kasir Barbershop Terbaik | Rp 50.000 Sekali Bayar",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://barbersuite.netlify.app"),
+  title: "Barber Suite — Aplikasi Kasir Barbershop Terbaik | Rp 50.000 Sekali Bayar",
   description:
-    "Aplikasi kasir digital khusus barbershop & salon. Kelola transaksi, laporan keuangan, pelanggan, dan stok produk dalam satu aplikasi. Cuma Rp 50.000 sekali bayar, pakai selamanya!",
+    "Aplikasi kasir modern khusus barbershop & salon. Lebih hemat dari Moka POS, 100% offline-first, laporan keuangan PDF & CSV, bagi hasil kapster, dan follow-up WhatsApp otomatis.",
   keywords: [
+    "Barber Suite",
     "aplikasi kasir barbershop",
-    "POS barbershop",
-    "aplikasi salon",
-    "kasir digital barbershop",
     "software barbershop",
-    "aplikasi kasir barbershop murah",
-    "POS barbershop terbaik",
+    "alternatif moka pos",
+    "kasir barbershop android",
     "point of sale barbershop",
-    "aplikasi barbershop android",
   ],
-  authors: [{ name: "POS Barbershop" }],
-  creator: "POS Barbershop",
-  publisher: "POS Barbershop",
+  authors: [{ name: "Barber Suite by Kriakarya" }],
+  creator: "Kriakarya",
+  publisher: "Barber Suite",
   robots: {
     index: true,
     follow: true,

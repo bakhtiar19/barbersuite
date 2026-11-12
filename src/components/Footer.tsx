@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Scissors, MessageCircle, Mail, Globe } from "lucide-react";
+import { Scissors, MessageCircle, Mail, Globe, ShieldCheck } from "lucide-react";
 
 export default function Footer() {
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6281234567890"; // TODO: Ganti nomor WA
@@ -16,39 +16,43 @@ export default function Footer() {
                 <Scissors className="w-4 h-4 -rotate-45" />
               </div>
               <span className="text-base font-black text-stone-900">
-                POS <span className="text-amber-700">Barbershop</span>
+                Barber <span className="text-amber-700">Suite</span>
               </span>
             </Link>
             <p className="text-xs text-stone-600 leading-relaxed max-w-sm font-normal">
-              Solusi sistem kasir digital Android tanpa langganan bulanan.
-              Dirancang untuk memajukan barbershop, salon, dan pangkas rambut di Indonesia.
+              Aplikasi kasir digital barbershop & salon modern tanpa biaya langganan bulanan.
+              Didukung mesin SQLite offline-first, ekspor laporan PDF/Excel, dan integrasi WhatsApp.
             </p>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-200/80 text-stone-700 text-[11px] font-bold">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+              <span>Barber Suite v4.2.0 by Kriakarya 2026</span>
+            </div>
           </div>
 
           {/* Col 2: Quick Links */}
           <div>
             <h4 className="text-xs font-black text-stone-900 uppercase tracking-wider mb-3">
-              Navigasi Cepat
+              Navigasi Halaman
             </h4>
             <ul className="space-y-2 text-xs font-medium">
               <li>
                 <a href="#fitur" className="hover:text-amber-700 transition-colors">
-                  Fitur Kasir
+                  Fitur Utama
                 </a>
               </li>
               <li>
                 <a href="#preview" className="hover:text-amber-700 transition-colors">
-                  Tampilan Antarmuka
+                  Tampilan Asli Aplikasi
+                </a>
+              </li>
+              <li>
+                <a href="#komparasi" className="hover:text-amber-700 transition-colors">
+                  Perbandingan vs Moka POS
                 </a>
               </li>
               <li>
                 <a href="#pricing" className="hover:text-amber-700 transition-colors">
-                  Harga Lisensi (Rp 50.000)
-                </a>
-              </li>
-              <li>
-                <a href="#testimoni" className="hover:text-amber-700 transition-colors">
-                  Testimoni Pelanggan
+                  Harga Lisensi (Rp 50.000 Sekali Bayar)
                 </a>
               </li>
               <li>
@@ -62,7 +66,7 @@ export default function Footer() {
           {/* Col 3: Contact */}
           <div>
             <h4 className="text-xs font-black text-stone-900 uppercase tracking-wider mb-3">
-              Kontak Layanan
+              Bantuan & Layanan
             </h4>
             <ul className="space-y-2.5 text-xs font-medium">
               <li>
@@ -78,11 +82,11 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="mailto:support@posbarbershop.com" // TODO: Ganti email
+                  href="mailto:support@barbersuite.com" // TODO: Ganti email
                   className="flex items-center gap-2 hover:text-stone-900 transition-colors"
                 >
                   <Mail className="w-4 h-4 text-stone-500" />
-                  <span>Email: support@posbarbershop.com</span>
+                  <span>Email: support@barbersuite.com</span>
                 </a>
               </li>
               <li>
@@ -93,7 +97,7 @@ export default function Footer() {
                   className="flex items-center gap-2 hover:text-amber-800 transition-colors"
                 >
                   <Globe className="w-4 h-4 text-stone-500" />
-                  <span>Instagram: @posbarbershop</span>
+                  <span>Instagram: @barbersuite.id</span>
                 </a>
               </li>
             </ul>
@@ -102,7 +106,7 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-stone-500">
-          <p>© 2025 POS Barbershop. Hak cipta dilindungi.</p>
+          <p>© 2026 Barber Suite by Kriakarya. Hak cipta dilindungi.</p>
           <p className="font-medium">Mendukung QRIS, BCA, Mandiri, BRI, BNI, GoPay, OVO, ShopeePay, DANA</p>
         </div>
       </div>

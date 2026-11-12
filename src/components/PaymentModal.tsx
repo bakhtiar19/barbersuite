@@ -112,7 +112,7 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
 
   const handlePayViaWhatsApp = () => {
     const text = encodeURIComponent(
-      `Halo Admin POS Barbershop! Saya ingin membeli aplikasi kasir (Rp 50.000).\n\nData Pembeli:\n• Nama: ${formData.name}\n• Email: ${formData.email}\n• WhatsApp: ${formData.whatsapp}\n• Order ID: ${demoOrderId || "POS-" + Date.now()}\n\nMohon petunjuk rekening atau QRIS pembayarannya. Terima kasih!`
+      `Halo Admin Barber Suite! Saya ingin membeli aplikasi kasir (Rp 50.000).\n\nData Pembeli:\n• Nama: ${formData.name}\n• Email: ${formData.email}\n• WhatsApp: ${formData.whatsapp}\n• Order ID: ${demoOrderId || "BS-" + Date.now()}\n\nMohon petunjuk rekening atau QRIS pembayarannya. Terima kasih!`
     );
     window.open(`https://wa.me/${waNumber}?text=${text}`, "_blank");
   };
@@ -154,7 +154,7 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
                 <CreditCard className="w-6 h-6" />
               </div>
               <h3 className="text-xl font-black text-stone-900 tracking-tight">
-                Beli Lisensi POS Barbershop
+                Beli Lisensi Barber Suite Pro
               </h3>
               <p className="text-stone-500 text-xs mt-1 font-medium">
                 Lisensi seumur hidup tanpa biaya langganan bulanan
