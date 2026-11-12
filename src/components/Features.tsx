@@ -1,190 +1,214 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import {
   Monitor,
   BarChart3,
   UserCheck,
   Package,
-  Calendar,
-  CreditCard,
-  CheckCircle2,
+  Printer,
+  WifiOff,
+  QrCode,
   Sparkles,
+  Check,
+  CheckCircle2,
+  Percent,
 } from "lucide-react";
 
-const FEATURES = [
-  {
-    icon: Monitor,
-    iconColor: "text-amber-800 bg-amber-100",
-    badge: "KASIR KILAT",
-    badgeColor: "bg-amber-100 text-amber-900",
-    title: "Kasir Digital Super Cepat & Praktis",
-    desc: "Input transaksi hitungan detik. Cukup sentuh layanan potong rambut, cuci, atau pomade, lalu pilih pembayaran. Antrean kasir selesai dalam sekejap.",
-    previewTitle: "Menu Kasir Sentuh Cepat",
-    previewItems: [
-      { name: "Gentleman Classic Cut", price: "Rp 50.000", tag: "Laris" },
-      { name: "Haircut + Cuci & Pijat", price: "Rp 70.000", tag: "Favorit" },
-      { name: "Pomade Oilbased 100g", price: "Rp 85.000", tag: "Produk" },
-    ],
-  },
-  {
-    icon: BarChart3,
-    iconColor: "text-emerald-800 bg-emerald-100",
-    badge: "LAPORAN OMSET",
-    badgeColor: "bg-emerald-100 text-emerald-900",
-    title: "Laporan Keuangan & Komisi Kapster Otomatis",
-    desc: "Bagi hasil kapster dihitung otomatis sesuai persentase yang Anda tentukan (misal 40:60). Tidak ada kecurigaan atau selisih hitung antar kapster.",
-    previewTitle: "Rekap Pembagian Komisi",
-    previewItems: [
-      { name: "Total Omset Hari Ini", price: "Rp 1.450.000", tag: "Kas" },
-      { name: "Komisi 3 Kapster (40%)", price: "Rp 580.000", tag: "Otomatis" },
-      { name: "Pendapatan Bersih Owner", price: "Rp 870.000", tag: "Bersih" },
-    ],
-  },
-  {
-    icon: UserCheck,
-    iconColor: "text-blue-800 bg-blue-100",
-    badge: "DATABASE MEMBER",
-    badgeColor: "bg-blue-100 text-blue-900",
-    title: "Manajemen Data Tamu & Histori Model Cukur",
-    desc: "Catat nomor WhatsApp dan preferensi gaya rambut tiap tamu. Ketika mereka datang lagi, kapster langsung tahu model rambut langganannya.",
-    previewTitle: "Buku Member (340 Tamu)",
-    previewItems: [
-      { name: "Andi Wijaya", price: "Fade Low Cut", tag: "12x Datang" },
-      { name: "Bagas Pratama", price: "Pompadour Sidepart", tag: "Member VIP" },
-      { name: "Doni Kusuma", price: "French Crop Textured", tag: "Kemarin" },
-    ],
-  },
-  {
-    icon: Package,
-    iconColor: "text-purple-800 bg-purple-100",
-    badge: "KONTROL INVENTORI",
-    badgeColor: "bg-purple-100 text-purple-900",
-    title: "Pantau Stok Pomade & Perlengkapan Cukur",
-    desc: "Lacak jumlah botol pomade, tonik rambut, dan silet cukur secara live. Dapatkan peringatan otomatis ketika persediaan sisa sedikit.",
-    previewTitle: "Status Stok Barbershop",
-    previewItems: [
-      { name: "Waterbased Matte Clay", price: "18 pcs", tag: "Aman" },
-      { name: "Hair Styling Powder", price: "3 pcs", tag: "Kritis" },
-      { name: "Tonic Penyubur Rambut", price: "12 pcs", tag: "Aman" },
-    ],
-  },
-  {
-    icon: Calendar,
-    iconColor: "text-rose-800 bg-rose-100",
-    badge: "JADWAL & ANTREAN",
-    badgeColor: "bg-rose-100 text-rose-900",
-    title: "Atur Kursi Barber & Reservasi Tamu",
-    desc: "Atur jadwal kerja kapster agar tidak ada antrean bertumpuk di ruang tunggu. Tamu juga bisa booking jam cukur favoritnya lebih awal.",
-    previewTitle: "Status Kursi Barber Live",
-    previewItems: [
-      { name: "Kursi 1 — Barber Rian", price: "Sedang Cukur", tag: "Aktif" },
-      { name: "Kursi 2 — Barber Eko", price: "Tersedia", tag: "Siap Tamu" },
-      { name: "Kursi 3 — Barber Arief", price: "Booking 14:00", tag: "Reservasi" },
-    ],
-  },
-  {
-    icon: CreditCard,
-    iconColor: "text-teal-800 bg-teal-100",
-    badge: "MULTI PAYMENT",
-    badgeColor: "bg-teal-100 text-teal-900",
-    title: "Mendukung QRIS, Transfer & Tunai",
-    desc: "Tamu bisa membayar lewat QRIS semua bank dan e-wallet (GoPay, OVO, ShopeePay, DANA) maupun uang tunai dengan perhitungan kembalian otomatis.",
-    previewTitle: "Metode Kasir Aktif",
-    previewItems: [
-      { name: "QRIS All E-Wallet & Bank", price: "Terintegrasi", tag: "Instan" },
-      { name: "Transfer Bank BCA / BRI", price: "Otomatis Rekap", tag: "Online" },
-      { name: "Uang Pas & Hitung Kembalian", price: "Cegah Selisih", tag: "Tunai" },
-    ],
-  },
-];
-
 export default function Features() {
+  const [kapsterSplit, setKapsterSplit] = useState<number>(40); // 40% komisi
+
   return (
-    <section id="fitur" className="py-24 bg-[#faf8f5]">
+    <section id="fitur" className="py-24 bg-[#FAF8F5]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold mb-3 border border-amber-200">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-amber-200/80 text-amber-950 text-xs font-black mb-3 border border-amber-300">
             <Sparkles className="w-3.5 h-3.5 text-amber-700" />
-            <span>SOLUSI LENGKAP SEKALI PAKAI</span>
+            <span>ARSITEKTUR FITUR MODERN</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl font-black text-stone-900 tracking-tight">
-            Fitur Canggih yang Dibuat Simpel & Mudah Dipakai
+          <h2 className="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight leading-tight">
+            Dirancang Sesuai Ritme Asli Kerja Barbershop
           </h2>
 
-          <p className="mt-3 text-stone-600 text-base">
-            Tanpa istilah teknis yang memusingkan. Semua kapster Anda bisa langsung
-            mengoperasikannya dalam waktu 5 menit.
+          <p className="mt-4 text-stone-600 text-base sm:text-lg">
+            Semua modul dibuat saling terhubung otomatis: kasir, bagi hasil kapster,
+            stok barang, hingga pencatatan nomor WhatsApp pelanggan.
           </p>
         </div>
 
-        {/* 6 Grid Cards with Vibrant Micro Mockups */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {FEATURES.map((feat, index) => {
-            const Icon = feat.icon;
-            return (
-              <motion.div
-                key={feat.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.08 }}
-                className="bg-white border border-stone-200/90 rounded-2xl p-6 flex flex-col justify-between hover:border-amber-400 hover:shadow-md transition-all shadow-xs"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <div
-                      className={`w-10 h-10 rounded-xl ${feat.iconColor} flex items-center justify-center font-bold`}
-                    >
-                      <Icon className="w-5 h-5" />
-                    </div>
-                    <span
-                      className={`text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full ${feat.badgeColor}`}
-                    >
-                      {feat.badge}
-                    </span>
-                  </div>
-
-                  <h3 className="text-base sm:text-lg font-bold text-stone-900 mb-2 leading-snug">
-                    {feat.title}
-                  </h3>
-
-                  <p className="text-xs sm:text-sm text-stone-600 leading-relaxed mb-5 font-normal">
-                    {feat.desc}
-                  </p>
+        {/* Bento Grid Layout (World-Class standard) */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+          {/* Bento Item 1: Large Featured Card (Span 7 cols) - Kasir & Printer Bluetooth */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="md:col-span-7 bg-white rounded-3xl p-7 sm:p-8 border-2 border-stone-200 shadow-sm flex flex-col justify-between hover:border-amber-400 transition-all"
+          >
+            <div>
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-[11px] font-black uppercase tracking-wider bg-amber-100 text-amber-900 px-3 py-1 rounded-full border border-amber-200">
+                  Modul Utama
+                </span>
+                <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+                  <Printer className="w-3.5 h-3.5" />
+                  <span>Support Printer Thermal Bluetooth</span>
                 </div>
+              </div>
 
-                {/* Micro UI Preview Snippet with Colored Tags */}
-                <div className="bg-[#FAF8F5] rounded-xl p-3 border border-stone-200/80 text-xs">
-                  <p className="font-bold text-stone-800 text-[11px] mb-2 pb-1.5 border-b border-stone-200 flex items-center justify-between">
-                    <span className="flex items-center gap-1.5">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                      <span>{feat.previewTitle}</span>
-                    </span>
-                    <span className="text-[10px] text-stone-400 font-normal">Live</span>
-                  </p>
-                  <div className="space-y-1.5 text-stone-700">
-                    {feat.previewItems.map((item, i) => (
-                      <div key={i} className="flex justify-between items-center text-[11px]">
-                        <span className="font-medium">{item.name}</span>
-                        <div className="flex items-center gap-1.5">
-                          <span className="font-bold text-stone-900">
-                            {item.price}
-                          </span>
-                          <span className="text-[9px] bg-white border border-stone-200 px-1.5 py-0.2 rounded text-stone-600 font-semibold">
-                            {item.tag}
-                          </span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+              <h3 className="text-2xl font-black text-stone-900 mb-2">
+                Kasir Cepat 3 Detik & Cetak Nota Kasir
+              </h3>
+
+              <p className="text-stone-600 text-sm leading-relaxed mb-6 font-normal">
+                Input potongan rambut atau produk cukup dengan 1 sentuhan.
+                Hubungkan langsung dengan printer thermal 58mm / 80mm via Bluetooth
+                tanpa kabel yang merepotkan.
+              </p>
+            </div>
+
+            {/* Interactive Visual Element */}
+            <div className="bg-[#FAF8F5] rounded-2xl p-4 border border-stone-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="space-y-1 text-xs text-stone-700 w-full sm:w-auto">
+                <p className="font-bold text-stone-900 flex items-center gap-1.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <span>Struk Cetak Rapi & Profesional</span>
+                </p>
+                <p className="text-[11px] text-stone-500">
+                  Tercetak logo barbershop, nama kapster, dan QRIS pembayaran
+                </p>
+              </div>
+
+              <span className="shrink-0 text-xs font-black bg-stone-900 text-amber-300 px-4 py-2 rounded-xl">
+                Cetak Struk Instan 🖨️
+              </span>
+            </div>
+          </motion.div>
+
+          {/* Bento Item 2: Interactive Kapster Commission Split (Span 5 cols) */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            className="md:col-span-5 bg-white rounded-3xl p-7 sm:p-8 border-2 border-stone-200 shadow-sm flex flex-col justify-between hover:border-amber-400 transition-all"
+          >
+            <div>
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-[11px] font-black uppercase tracking-wider bg-blue-100 text-blue-900 px-3 py-1 rounded-full border border-blue-200">
+                  Transparansi Gaji
+                </span>
+                <Percent className="w-4 h-4 text-blue-600" />
+              </div>
+
+              <h3 className="text-xl font-black text-stone-900 mb-2">
+                Bagi Hasil Kapster Otomatis
+              </h3>
+
+              <p className="text-stone-600 text-xs sm:text-sm leading-relaxed mb-4 font-normal">
+                Set persentase bagi hasil kapster sesuai kesepakatan. Sistem
+                otomatis menghitung komisi tiap akhir shift.
+              </p>
+
+              {/* Interactive Split Selector */}
+              <div className="bg-[#FAF8F5] p-3.5 rounded-2xl border border-stone-200 space-y-2">
+                <div className="flex justify-between text-xs font-bold text-stone-700">
+                  <span>Porsi Komisi Kapster:</span>
+                  <span className="text-amber-800 font-black">{kapsterSplit}%</span>
                 </div>
-              </motion.div>
-            );
-          })}
+                <div className="grid grid-cols-3 gap-1.5">
+                  {[35, 40, 50].map((val) => (
+                    <button
+                      key={val}
+                      type="button"
+                      onClick={() => setKapsterSplit(val)}
+                      className={`py-1 rounded-lg text-xs font-bold border transition-all cursor-pointer ${
+                        kapsterSplit === val
+                          ? "bg-stone-900 text-amber-300 border-stone-900"
+                          : "bg-white text-stone-700 border-stone-200"
+                      }`}
+                    >
+                      {val} : {100 - val}
+                    </button>
+                  ))}
+                </div>
+                <p className="text-[10px] text-stone-500 text-center pt-1 font-medium">
+                  Contoh: Dari omset Rp 100.000, Kapster dapat Rp{" "}
+                  {(1000 * kapsterSplit).toLocaleString("id-ID")}
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Bento Item 3: Offline-First Engine (Span 4 cols) */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.15 }}
+            className="md:col-span-4 bg-white rounded-3xl p-6 sm:p-7 border-2 border-stone-200 shadow-sm hover:border-amber-400 transition-all"
+          >
+            <div className="w-10 h-10 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold mb-4">
+              <WifiOff className="w-5 h-5" />
+            </div>
+
+            <h3 className="text-lg font-bold text-stone-900 mb-2">
+              100% Offline-First Engine
+            </h3>
+
+            <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-normal">
+              Sinyal internet lemot atau listrik padam? Kasir Anda tetap bisa
+              melayani pelanggan tanpa gangguan sedikit pun. Data aman di HP.
+            </p>
+          </motion.div>
+
+          {/* Bento Item 4: Database WhatsApp Tamu (Span 4 cols) */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+            className="md:col-span-4 bg-white rounded-3xl p-6 sm:p-7 border-2 border-stone-200 shadow-sm hover:border-amber-400 transition-all"
+          >
+            <div className="w-10 h-10 rounded-2xl bg-purple-100 text-purple-800 flex items-center justify-center font-bold mb-4">
+              <UserCheck className="w-5 h-5" />
+            </div>
+
+            <h3 className="text-lg font-bold text-stone-900 mb-2">
+              Retensi Tamu via WhatsApp
+            </h3>
+
+            <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-normal">
+              Simpan nomor HP dan riwayat model cukur tiap tamu. Anda bisa kirimkan
+              promo personal yang membuat pelanggan kembali lagi dan lagi.
+            </p>
+          </motion.div>
+
+          {/* Bento Item 5: Multi Payment & QRIS (Span 4 cols) */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.25 }}
+            className="md:col-span-4 bg-white rounded-3xl p-6 sm:p-7 border-2 border-stone-200 shadow-sm hover:border-amber-400 transition-all"
+          >
+            <div className="w-10 h-10 rounded-2xl bg-teal-100 text-teal-800 flex items-center justify-center font-bold mb-4">
+              <QrCode className="w-5 h-5" />
+            </div>
+
+            <h3 className="text-lg font-bold text-stone-900 mb-2">
+              Terima QRIS & Semua Pembayaran
+            </h3>
+
+            <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-normal">
+              Mendukung QRIS semua e-wallet (GoPay, OVO, ShopeePay, DANA) dan transfer
+              bank. Rekap harian tanpa selisih di laci uang kasir.
+            </p>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -5,10 +5,12 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import PainPoints from "@/components/PainPoints";
 import Features from "@/components/Features";
+import SavingsCalculator from "@/components/SavingsCalculator";
+import ComparisonTable from "@/components/ComparisonTable";
 import WhyChooseUs from "@/components/WhyChooseUs";
+import AppPreview from "@/components/AppPreview";
 import Pricing from "@/components/Pricing";
 import Testimonials from "@/components/Testimonials";
-import AppPreview from "@/components/AppPreview";
 import FAQ from "@/components/FAQ";
 import CTAFinal from "@/components/CTAFinal";
 import Footer from "@/components/Footer";
@@ -32,37 +34,43 @@ export default function Home() {
       <Navbar />
 
       <main>
-        {/* Hero — Full viewport, headline + CTA + mockup */}
+        {/* 1. Hero — Editorial Headline + Live Interactive POS Simulator */}
         <HeroSection />
 
-        {/* Pain Points — Masalah yang dialami pemilik barbershop */}
+        {/* 2. Pain Points — Masalah riil yang dialami pemilik barbershop */}
         <PainPoints />
 
-        {/* Features — Solusi dengan fitur-fitur POS Barbershop */}
+        {/* 3. Features — Bento Grid 2.0 dengan modul terintegrasi */}
         <Features />
 
-        {/* Why Choose Us — Keunggulan + counter statistik */}
+        {/* 4. Interactive Savings / ROI Calculator — Hitung penghematan tahunan */}
+        <SavingsCalculator />
+
+        {/* 5. Comparison Table — Perbandingan transparan vs software bulanan */}
+        <ComparisonTable />
+
+        {/* 6. Why Choose Us — Nilai lebih + Dark Stone Luxury Ribbon */}
         <WhyChooseUs />
 
-        {/* App Preview — Tab carousel screenshot aplikasi */}
+        {/* 7. App Preview — Tab tampilan nyata dashboard & laporan */}
         <AppPreview />
 
-        {/* Pricing — Kartu harga + CTA pembelian */}
+        {/* 8. Pricing — Kartu harga Rp 50.000 seumur hidup */}
         <Pricing onOpenPayment={handleOpenPayment} />
 
-        {/* Testimonials — Carousel testimoni pelanggan */}
+        {/* 9. Testimonials — Cerita nyata pemilik barbershop */}
         <Testimonials />
 
-        {/* FAQ — Accordion pertanyaan umum */}
+        {/* 10. FAQ — Tanya jawab lengkap seputar instalasi & fitur */}
         <FAQ />
 
-        {/* CTA Final — Closing section + countdown timer */}
+        {/* 11. Closing CTA — Penutup hardselling + countdown timer */}
         <CTAFinal />
       </main>
 
       <Footer />
 
-      {/* Floating Elements */}
+      {/* Floating Concierge Assistant & Mobile Bar */}
       <WhatsAppFloat />
       <StickyMobileCTA />
 
