@@ -7,7 +7,7 @@ import { ChevronDown, HelpCircle, MessageCircle } from "lucide-react";
 const FAQS = [
   {
     q: "Apakah aplikasi ini bisa digunakan secara offline tanpa internet?",
-    a: "Bisa! POS Barbershop dapat digunakan untuk input transaksi dan cetak nota secara offline. Koneksi internet hanya dibutuhkan saat backup database ke cloud atau mengunduh pembaruan fitur.",
+    a: "Bisa! Barber Suite dapat digunakan untuk input transaksi dan cetak nota secara offline. Koneksi internet hanya dibutuhkan saat backup database ke cloud atau mengunduh pembaruan fitur.",
   },
   {
     q: "Bisa dipakai di berapa HP / tablet?",

@@ -82,7 +82,7 @@ export default function ComparisonTable() {
           </div>
 
           <h2 className="text-3xl sm:text-4xl font-black text-stone-900 tracking-tight">
-            Kenapa POS Barbershop Jauh Lebih Masuk Akal?
+            Kenapa Barber Suite Jauh Lebih Masuk Akal?
           </h2>
 
           <p className="mt-3 text-stone-600 text-sm sm:text-base">
@@ -101,7 +101,7 @@ export default function ComparisonTable() {
                   <th className="p-4 sm:p-5 w-2/5 bg-amber-100/80 text-amber-950 font-black border-x border-amber-300">
                     <div className="flex items-center gap-1.5">
                       <Sparkles className="w-4 h-4 text-amber-600" />
-                      <span>POS Barbershop</span>
+                      <span>Barber Suite</span>
                     </div>
                   </th>
                   <th className="p-4 sm:p-5 w-1/5 text-stone-500">

@@ -55,16 +55,16 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-[#faf8f5]/95 backdrop-blur-md border-b border-stone-200/90 shadow-xs py-3"
+          ? "bg-[#FAF8F5]/90 backdrop-blur-xl border-b border-stone-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.03)] py-3"
           : "bg-transparent py-4 sm:py-5"
       }`}
     >
-      {/* Barber Pole Strip Accent at very top of navbar */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-[repeating-linear-gradient(45deg,#dc2626,#dc2626_10px,#ffffff_10px,#ffffff_20px,#2563eb_20px,#2563eb_30px,#ffffff_30px,#ffffff_40px)] opacity-90" />
+      {/* Refined Barber Pole Hairline Accent at very top of navbar */}
+      <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-[repeating-linear-gradient(45deg,#dc2626,#dc2626_8px,#ffffff_8px,#ffffff_16px,#2563eb_16px,#2563eb_24px,#ffffff_24px,#ffffff_32px)] opacity-85" />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link

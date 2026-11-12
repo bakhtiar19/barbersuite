@@ -45,28 +45,28 @@ export const metadata: Metadata = {
     type: "website",
     locale: "id_ID",
     url: process.env.NEXT_PUBLIC_BASE_URL || "https://pos-barbershop.netlify.app",
-    siteName: "POS Barbershop",
-    title: "POS Barbershop — Aplikasi Kasir Barbershop #1 di Indonesia",
+    siteName: "Barber Suite",
+    title: "Barber Suite — Aplikasi Kasir Barbershop Modern #1 di Indonesia",
     description:
-      "Aplikasi kasir digital khusus barbershop & salon. Cuma Rp 50.000 sekali bayar, pakai selamanya! Sudah dipakai 500+ barbershop.",
+      "Aplikasi kasir modern khusus barbershop & salon. Lebih hemat dari Moka POS, 100% offline-first, laporan keuangan PDF & CSV, bagi hasil kapster, dan follow-up WhatsApp otomatis.",
     images: [
       {
-        url: "/images/og-image.png", // TODO: Ganti dengan OG image real
+        url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "POS Barbershop — Aplikasi Kasir Barbershop Terbaik",
+        alt: "Barber Suite — Aplikasi Kasir Barbershop Modern",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "POS Barbershop — Aplikasi Kasir Barbershop #1 di Indonesia",
+    title: "Barber Suite — Aplikasi Kasir Barbershop Modern #1 di Indonesia",
     description:
-      "Aplikasi kasir digital khusus barbershop & salon. Cuma Rp 50.000 sekali bayar!",
-    images: ["/images/og-image.png"], // TODO: Ganti dengan OG image real
+      "Aplikasi kasir digital modern untuk barbershop & salon. Cuma Rp 50.000 sekali bayar, pakai selamanya!",
+    images: ["/images/og-image.png"],
   },
   alternates: {
-    canonical: process.env.NEXT_PUBLIC_BASE_URL || "https://pos-barbershop.netlify.app",
+    canonical: process.env.NEXT_PUBLIC_BASE_URL || "https://barbersuite.netlify.app",
   },
 };
 
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  name: "POS Barbershop",
+  name: "Barber Suite",
   applicationCategory: "BusinessApplication",
   operatingSystem: "Android",
   offers: {

@@ -28,7 +28,7 @@ export default function SavingsCalculator() {
 
           <p className="mt-3 text-stone-600 text-sm sm:text-base">
             Bandingkan biaya berlangganan software kasir konvensional dengan sistem sekali bayar
-            POS Barbershop.
+            Barber Suite.
           </p>
         </div>
 
@@ -102,7 +102,7 @@ export default function SavingsCalculator() {
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span>Biaya POS Barbershop (Seumur Hidup):</span>
+                  <span>Biaya Barber Suite (Seumur Hidup):</span>
                   <span className="font-bold text-emerald-700">
                     Cuma Rp 50.000 (Sekali Saja)
                   </span>

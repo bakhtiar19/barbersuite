@@ -28,7 +28,7 @@ export default function WhatsAppFloat() {
 
   const openWhatsApp = (customText?: string) => {
     const defaultText =
-      "Halo Tim POS Barbershop! Saya tertarik dengan aplikasi kasir seharga Rp 50.000. Mau tanya-tanya lebih lanjut.";
+      "Halo Tim Barber Suite! Saya tertarik dengan aplikasi kasir seharga Rp 50.000. Mau tanya-tanya lebih lanjut.";
     const text = encodeURIComponent(customText || defaultText);
     window.open(`https://wa.me/${whatsappNumber}?text=${text}`, "_blank");
   };
@@ -84,7 +84,7 @@ export default function WhatsAppFloat() {
               </div>
               <div>
                 <p className="text-xs font-bold text-stone-900 leading-tight">
-                  Konsultan POS Barbershop
+                  Konsultan Barber Suite
                 </p>
                 <span className="text-[10px] text-emerald-700 font-medium">
                   Online • Siap Membantu

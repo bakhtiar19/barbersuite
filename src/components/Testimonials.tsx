@@ -11,7 +11,7 @@ const TESTIMONIALS = [
     city: "Jakarta Selatan",
     rating: 5,
     avatarColor: "bg-amber-500 text-stone-950",
-    text: "Sebelumnya saya catat omset di buku tulis dan sering selisih uang kas. Sejak pakai POS Barbershop, pembukuan rapi banget dan kapster bisa lihat bagian komisinya sendiri.",
+    text: "Sebelumnya saya catat omset di buku tulis dan sering selisih uang kas. Sejak pakai Barber Suite, pembukuan rapi banget dan kapster bisa lihat bagian komisinya sendiri.",
   },
   {
     name: "Rizky Hidayat",
@@ -35,7 +35,7 @@ const TESTIMONIALS = [
     city: "Yogyakarta",
     rating: 5,
     avatarColor: "bg-purple-600 text-white",
-    text: "Dulu pernah langganan aplikasi kasir lain Rp 200.000 per bulan, lumayan membebani. POS Barbershop ini bayar Rp 50.000 sekali aja, fiturnya malah lebih pas buat barbershop.",
+    text: "Dulu pernah langganan aplikasi kasir lain Rp 200.000 per bulan, lumayan membebani. Barber Suite ini bayar Rp 50.000 sekali aja, fiturnya malah lebih pas buat barbershop.",
   },
   {
     name: "Fajar Rahman",

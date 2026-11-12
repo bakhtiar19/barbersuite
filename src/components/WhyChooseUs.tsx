@@ -53,7 +53,7 @@ export default function WhyChooseUs() {
           </div>
 
           <h2 className="text-3xl sm:text-4xl font-black text-stone-900 tracking-tight">
-            Kenapa Ratusan Barbershop Memilih POS Barbershop?
+            Kenapa Ratusan Barbershop Memilih Barber Suite?
           </h2>
 
           <p className="mt-3 text-stone-600 text-base">
