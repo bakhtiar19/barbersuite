@@ -106,27 +106,6 @@ export default function FAQ() {
             );
           })}
         </div>
-
-        {/* WhatsApp Help Banner */}
-        <div className="mt-10 p-6 rounded-2xl bg-white border-2 border-amber-300 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="text-center sm:text-left">
-            <h4 className="text-sm font-black text-stone-900">
-              Masih ingin konsultasi seputar fitur kasir?
-            </h4>
-            <p className="text-xs text-stone-600 mt-1">
-              Hubungi CS kami di WhatsApp, kami bantu jawab dengan senang hati.
-            </p>
-          </div>
-          <a
-            href="https://wa.me/6282145773753?text=Halo%2C%20saya%20mau%20tanya-tanya%20tentang%20aplikasi%20Barber%20Suite"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-amber-400 hover:bg-amber-500 text-stone-950 font-black text-xs transition-colors shrink-0 shadow-xs"
-          >
-            <MessageCircle className="w-4 h-4 text-stone-950" />
-            <span>Chat via WhatsApp</span>
-          </a>
-        </div>
       </div>
     </section>
   );

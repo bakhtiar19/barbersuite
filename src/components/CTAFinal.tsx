@@ -13,7 +13,11 @@ import {
   Flame,
 } from "lucide-react";
 
-export default function CTAFinal() {
+interface CTAFinalProps {
+  onOpenPayment?: () => void;
+}
+
+export default function CTAFinal({ onOpenPayment }: CTAFinalProps) {
   const [timeLeft, setTimeLeft] = useState({
     hours: "08",
     minutes: "42",
@@ -121,39 +125,17 @@ export default function CTAFinal() {
           </div>
         </div>
 
-        {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-lg mx-auto">
-          <a
-            href="#pricing"
-            onClick={(e) => {
-              e.preventDefault();
-              const el = document.querySelector("#pricing");
-              if (el) {
-                const navbarHeight = 85;
-                const elementPosition = el.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
-                window.scrollTo({
-                  top: Math.max(0, offsetPosition),
-                  behavior: "smooth",
-                });
-              }
-            }}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-amber-400 via-amber-400 to-yellow-400 hover:from-amber-500 hover:to-amber-400 text-stone-950 font-black text-base shadow-lg shadow-amber-500/25 hover:shadow-xl transition-all active:scale-98 cursor-pointer"
+        {/* Action Buttons (Hard-sell: Only Buy Option) */}
+        <div className="flex items-center justify-center max-w-md mx-auto">
+          <button
+            type="button"
+            onClick={() => onOpenPayment?.()}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-10 py-4 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-400 to-yellow-400 hover:from-amber-500 hover:to-amber-400 text-stone-950 font-black text-base sm:text-lg shadow-lg shadow-amber-500/25 hover:shadow-xl transition-all active:scale-98 cursor-pointer"
           >
-            <Zap className="w-4 h-4 fill-stone-950" />
-            <span>Beli Sekarang — Rp 50.000</span>
-            <ArrowRight className="w-4 h-4" />
-          </a>
-
-          <a
-            href="https://wa.me/6282145773753?text=Halo%20Admin%2C%20saya%20tertarik%20dengan%20Barber%20Suite%20dan%20mau%20konsultasi%20dulu"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-white hover:bg-stone-50 text-stone-800 font-bold text-base border-2 border-stone-200 shadow-xs transition-colors"
-          >
-            <MessageCircle className="w-4 h-4 text-emerald-600" />
-            <span>Konsultasi Gratis via WhatsApp</span>
-          </a>
+            <Zap className="w-5 h-5 fill-stone-950" />
+            <span>Beli Barber Suite — Cuma Rp 50.000</span>
+            <ArrowRight className="w-5 h-5" />
+          </button>
         </div>
 
         {/* Trust Badges */}

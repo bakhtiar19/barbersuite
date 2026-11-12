@@ -3,7 +3,11 @@
 import { motion } from "framer-motion";
 import { Zap, Scissors } from "lucide-react";
 
-export default function StickyMobileCTA() {
+interface StickyMobileCTAProps {
+  onOpenPayment?: () => void;
+}
+
+export default function StickyMobileCTA({ onOpenPayment }: StickyMobileCTAProps) {
   return (
     <aside
       aria-label="Penawaran Cepat Mobile"
@@ -25,27 +29,15 @@ export default function StickyMobileCTA() {
         </div>
 
         {/* Right CTA Button */}
-        <motion.a
-          href="#pricing"
-          onClick={(e) => {
-            e.preventDefault();
-            const el = document.querySelector("#pricing");
-            if (el) {
-              const navbarHeight = 85;
-              const elementPosition = el.getBoundingClientRect().top;
-              const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
-              window.scrollTo({
-                top: Math.max(0, offsetPosition),
-                behavior: "smooth",
-              });
-            }
-          }}
+        <motion.button
+          type="button"
+          onClick={() => onOpenPayment?.()}
           whileTap={{ scale: 0.95 }}
           className="flex-1 max-w-[160px] py-2.5 px-4 rounded-xl bg-amber-400 text-stone-950 font-black text-xs text-center flex items-center justify-center gap-1.5 shadow-xs active:bg-amber-500 transition-colors cursor-pointer"
         >
           <Zap className="w-3.5 h-3.5 fill-stone-950" />
           <span>Beli Sekarang</span>
-        </motion.a>
+        </motion.button>
       </div>
     </aside>
   );

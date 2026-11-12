@@ -125,7 +125,11 @@ const TABS: ShowcaseTab[] = [
   },
 ];
 
-export default function AppScreenshotsShowcase() {
+interface AppScreenshotsShowcaseProps {
+  onOpenPayment?: () => void;
+}
+
+export default function AppScreenshotsShowcase({ onOpenPayment }: AppScreenshotsShowcaseProps) {
   const [activeTabId, setActiveTabId] = useState<string>("kasir");
   const activeTab = TABS.find((t) => t.id === activeTabId) || TABS[0];
 
@@ -217,13 +221,14 @@ export default function AppScreenshotsShowcase() {
 
                 {/* Bottom CTA for this feature */}
                 <div className="pt-4 border-t border-stone-100 flex items-center gap-4">
-                  <a
-                    href="#pricing"
-                    className="inline-flex items-center gap-2 text-xs font-black text-stone-900 bg-amber-400 hover:bg-amber-300 px-5 py-2.5 rounded-xl shadow-xs transition-colors"
+                  <button
+                    type="button"
+                    onClick={() => onOpenPayment?.()}
+                    className="inline-flex items-center gap-2 text-xs font-black text-stone-900 bg-amber-400 hover:bg-amber-300 px-5 py-2.5 rounded-xl shadow-xs transition-colors cursor-pointer"
                   >
                     <span>Dapatkan Fitur Ini — Rp 50.000</span>
                     <ArrowRight className="w-3.5 h-3.5" />
-                  </a>
+                  </button>
                 </div>
               </div>
 

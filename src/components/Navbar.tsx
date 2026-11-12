@@ -15,11 +15,15 @@ const NAV_ITEMS: NavItem[] = [
   { label: "Fitur", href: "#fitur" },
   { label: "Tampilan Nyata", href: "#preview" },
   { label: "vs Moka POS", href: "#komparasi", badge: "Hemat 98%" },
-  { label: "Harga", href: "#pricing" },
+  { label: "Keunggulan", href: "#keunggulan" },
   { label: "FAQ", href: "#faq" },
 ];
 
-export default function Navbar() {
+interface NavbarProps {
+  onOpenPayment?: () => void;
+}
+
+export default function Navbar({ onOpenPayment }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -112,15 +116,15 @@ export default function Navbar() {
 
           {/* Desktop CTA Button */}
           <div className="hidden md:flex items-center gap-3">
-            <a
-              href="#pricing"
-              onClick={(e) => handleNavClick(e, "#pricing")}
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black text-stone-950 bg-amber-400 hover:bg-amber-300 border border-amber-500/30 transition-all shadow-sm active:scale-95"
+            <button
+              type="button"
+              onClick={() => onOpenPayment?.()}
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black text-stone-950 bg-amber-400 hover:bg-amber-300 border border-amber-500/30 transition-all shadow-sm active:scale-95 cursor-pointer"
             >
               <Sparkles className="w-3.5 h-3.5" />
               <span>Beli Lisensi — Rp 50.000</span>
               <ArrowRight className="w-3.5 h-3.5" />
-            </a>
+            </button>
           </div>
 
           {/* Mobile Hamburger Button */}
@@ -169,14 +173,17 @@ export default function Navbar() {
               ))}
 
               <div className="pt-4">
-                <a
-                  href="#pricing"
-                  onClick={(e) => handleNavClick(e, "#pricing")}
-                  className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl text-sm font-black text-stone-950 bg-amber-400 hover:bg-amber-300 shadow-sm"
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    onOpenPayment?.();
+                  }}
+                  className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl text-sm font-black text-stone-950 bg-amber-400 hover:bg-amber-300 shadow-sm cursor-pointer"
                 >
                   <Sparkles className="w-4 h-4" />
                   <span>Beli Barber Suite — Rp 50.000</span>
-                </a>
+                </button>
               </div>
             </div>
           </motion.div>

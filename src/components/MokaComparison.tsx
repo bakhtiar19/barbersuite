@@ -3,7 +3,11 @@
 import React from "react";
 import { Check, X, Sparkles, Zap, ShieldCheck } from "lucide-react";
 
-export default function MokaComparison() {
+interface MokaComparisonProps {
+  onOpenPayment?: () => void;
+}
+
+export default function MokaComparison({ onOpenPayment }: MokaComparisonProps) {
   const comparisonItems = [
     {
       feature: "Biaya / Skema Pembayaran",
@@ -132,12 +136,13 @@ export default function MokaComparison() {
                 Investasi sekali Rp 50.000, tidak ada tagihan kartu kredit bulanan.
               </p>
             </div>
-            <a
-              href="#pricing"
-              className="px-6 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-stone-950 font-black text-xs uppercase tracking-wider shrink-0 transition-colors shadow-xs"
+            <button
+              type="button"
+              onClick={() => onOpenPayment?.()}
+              className="px-6 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-stone-950 font-black text-xs uppercase tracking-wider shrink-0 transition-colors shadow-xs cursor-pointer"
             >
               Beli Sekarang — Rp 50.000
-            </a>
+            </button>
           </div>
         </div>
       </div>

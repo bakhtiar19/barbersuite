@@ -69,16 +69,9 @@ export default function Footer() {
               Bantuan & Layanan
             </h4>
             <ul className="space-y-2.5 text-xs font-medium">
-              <li>
-                <a
-                  href={`https://wa.me/${whatsappNumber}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 hover:text-emerald-700 transition-colors text-stone-800 font-semibold"
-                >
-                  <MessageCircle className="w-4 h-4 text-emerald-600" />
-                  <span>WhatsApp: +{whatsappNumber}</span>
-                </a>
+              <li className="flex items-center gap-2 text-stone-800 font-semibold">
+                <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                <span>Lisensi Seumur Hidup (Beli Putus)</span>
               </li>
               <li>
                 <a
