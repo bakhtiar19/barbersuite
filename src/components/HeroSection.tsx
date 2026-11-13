@@ -1,15 +1,44 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, Zap, ShieldCheck } from "lucide-react";
+import { ArrowRight, Sparkles, Zap, ShieldCheck, Clock } from "lucide-react";
 
 interface HeroSectionProps {
   onOpenPayment?: () => void;
 }
 
 export default function HeroSection({ onOpenPayment }: HeroSectionProps) {
+  const [countdown, setCountdown] = useState({
+    hours: "07",
+    minutes: "42",
+    seconds: "15",
+  });
+
+  useEffect(() => {
+    const calculateTime = () => {
+      const now = new Date();
+      const endOfDay = new Date();
+      endOfDay.setHours(23, 59, 59, 999);
+      const diff = Math.max(0, endOfDay.getTime() - now.getTime());
+
+      const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const m = Math.floor((diff / (1000 * 60)) % 60);
+      const s = Math.floor((diff / 1000) % 60);
+
+      setCountdown({
+        hours: String(h).padStart(2, "0"),
+        minutes: String(m).padStart(2, "0"),
+        seconds: String(s).padStart(2, "0"),
+      });
+    };
+
+    calculateTime();
+    const interval = setInterval(calculateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   const handleBuyClick = (e: React.MouseEvent) => {
     e.preventDefault();
     if (onOpenPayment) {
@@ -92,7 +121,7 @@ export default function HeroSection({ onOpenPayment }: HeroSectionProps) {
               <strong className="text-stone-900 font-bold">tanpa koneksi internet</strong>.
             </p>
 
-            {/* Action Area: Button without raw price, clear strikethrough price block below */}
+            {/* Action Area: Button without raw price, clear price block + countdown right beside price */}
             <div className="pt-2 space-y-3">
               <motion.button
                 type="button"
@@ -105,20 +134,30 @@ export default function HeroSection({ onOpenPayment }: HeroSectionProps) {
                 <ArrowRight className="w-5 h-5 stroke-[2.5]" />
               </motion.button>
 
-              {/* Price Presentation: Strikethrough Rp 111.400 -> Rp 55.700 */}
-              <div className="flex flex-wrap items-center gap-2.5 text-stone-700">
+              {/* Price Presentation: Strikethrough Rp 111.400 -> Rp 55.700 with Countdown Timer Directly Beside It */}
+              <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 text-stone-700 pt-1">
                 <span className="text-xs sm:text-sm text-stone-400 font-bold line-through">
                   Rp 111.400
                 </span>
-                <span className="text-lg sm:text-xl font-black text-stone-950">
+                <span className="text-xl sm:text-2xl font-black text-stone-950">
                   Rp 55.700
                 </span>
                 <span className="text-[10px] sm:text-[11px] bg-red-600 text-white font-black px-2 py-0.5 rounded-full uppercase tracking-wider">
-                  Diskon 50%
+                  Hemat 50%
                 </span>
-                <span className="text-xs text-stone-500 font-medium">
-                  • Sekali bayar selamanya
-                </span>
+
+                {/* Countdown Timer Placed Right Next to Price */}
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-amber-100/90 border border-amber-300 text-stone-900 shadow-2xs">
+                  <Clock className="w-3.5 h-3.5 text-red-600 animate-pulse shrink-0" />
+                  <span className="text-[10px] font-black uppercase text-amber-950">Berakhir:</span>
+                  <div className="flex items-center gap-0.5 font-mono text-xs font-black text-stone-950">
+                    <span className="bg-white px-1 py-0.2 rounded border border-amber-200">{countdown.hours}</span>
+                    <span>:</span>
+                    <span className="bg-white px-1 py-0.2 rounded border border-amber-200">{countdown.minutes}</span>
+                    <span>:</span>
+                    <span className="bg-white px-1 py-0.2 rounded border border-amber-200 text-red-600">{countdown.seconds}</span>
+                  </div>
+                </div>
               </div>
             </div>
 

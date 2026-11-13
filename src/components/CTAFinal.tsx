@@ -65,70 +65,38 @@ export default function CTAFinal({ onOpenPayment }: CTAFinalProps) {
           Tinggalkan nota kertas yang rawan hilang dan sistem sewa bulanan yang menguras kas toko Anda.
         </p>
 
-        {/* Countdown Timer Block */}
-        <div className="mt-7 mb-8 inline-block p-5 sm:p-6 rounded-3xl bg-white border-2 border-amber-300 shadow-lg">
-          <div className="flex items-center justify-center gap-1.5 text-xs text-amber-950 font-bold uppercase tracking-wider mb-3">
-            <Clock className="w-4 h-4 text-amber-700" />
-            <span>Harga Promo Berakhir Dalam:</span>
-          </div>
-
-          <div className="flex items-center justify-center gap-2 sm:gap-3 font-mono">
-            {/* Hours */}
-            <div className="flex flex-col items-center">
-              <div className="w-14 sm:w-16 h-14 sm:h-16 rounded-2xl bg-[#FAF7F2] border-2 border-stone-200 flex items-center justify-center shadow-xs">
-                <span className="text-xl sm:text-2xl font-black text-stone-900">
-                  {timeLeft.hours}
-                </span>
-              </div>
-              <span className="text-[10px] text-stone-500 font-sans font-bold mt-1">
-                Jam
-              </span>
+        {/* Unified Price + Countdown Banner (Countdown diletakkan langsung di sebelah harga) */}
+        <div className="max-w-xl mx-auto mt-8 mb-8 p-5 sm:p-6 rounded-3xl bg-white border-2 border-amber-300 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-5">
+          {/* Price Area */}
+          <div className="flex items-center gap-3.5">
+            <div className="text-left">
+              <p className="text-[10px] text-stone-400 uppercase font-bold tracking-wider">Harga Normal</p>
+              <p className="text-sm sm:text-base font-bold text-stone-400 line-through">Rp 111.400</p>
             </div>
-
-            <span className="text-xl font-black text-stone-400 pb-4">:</span>
-
-            {/* Minutes */}
-            <div className="flex flex-col items-center">
-              <div className="w-14 sm:w-16 h-14 sm:h-16 rounded-2xl bg-[#FAF7F2] border-2 border-stone-200 flex items-center justify-center shadow-xs">
-                <span className="text-xl sm:text-2xl font-black text-stone-900">
-                  {timeLeft.minutes}
-                </span>
+            <div className="h-9 w-px bg-stone-200" />
+            <div className="text-left">
+              <div className="flex items-center gap-1.5">
+                <p className="text-[10px] text-amber-800 uppercase font-black tracking-wider">Promo Spesial</p>
+                <span className="text-[9px] bg-red-600 text-white font-black px-1.5 py-0.2 rounded-full uppercase">Hemat 50%</span>
               </div>
-              <span className="text-[10px] text-stone-500 font-sans font-bold mt-1">
-                Menit
-              </span>
-            </div>
-
-            <span className="text-xl font-black text-stone-400 pb-4">:</span>
-
-            {/* Seconds */}
-            <div className="flex flex-col items-center">
-              <div className="w-14 sm:w-16 h-14 sm:h-16 rounded-2xl bg-[#FAF7F2] border-2 border-stone-200 flex items-center justify-center shadow-xs">
-                <span className="text-xl sm:text-2xl font-black text-red-600 animate-pulse">
-                  {timeLeft.seconds}
-                </span>
-              </div>
-              <span className="text-[10px] text-stone-500 font-sans font-bold mt-1">
-                Detik
-              </span>
+              <p className="text-2xl sm:text-3xl font-black text-stone-950">Rp 55.700</p>
             </div>
           </div>
-        </div>
 
-        {/* Clear Designated Price Presentation Block */}
-        <div className="max-w-md mx-auto mb-6 p-4 rounded-2xl bg-white border border-amber-300/80 shadow-md flex items-center justify-center gap-3 sm:gap-4 flex-wrap">
-          <div className="text-left">
-            <p className="text-[10px] text-stone-400 uppercase font-bold tracking-wider">Harga Normal</p>
-            <p className="text-sm sm:text-base font-bold text-stone-400 line-through">Rp 111.400</p>
+          {/* Countdown Placed Directly Beside Price */}
+          <div className="w-full sm:w-auto p-3 rounded-2xl bg-[#FAF7F2] border border-amber-200 flex items-center justify-center gap-2.5">
+            <Clock className="w-4 h-4 text-red-600 animate-pulse shrink-0" />
+            <div className="text-left">
+              <p className="text-[9px] uppercase font-black text-amber-950 tracking-wider">Promo Berakhir Dalam:</p>
+              <div className="flex items-center gap-1 font-mono text-xs sm:text-sm font-black text-stone-950">
+                <span className="bg-white px-1.5 py-0.5 rounded border border-amber-200 shadow-2xs">{timeLeft.hours}</span>
+                <span>:</span>
+                <span className="bg-white px-1.5 py-0.5 rounded border border-amber-200 shadow-2xs">{timeLeft.minutes}</span>
+                <span>:</span>
+                <span className="bg-white px-1.5 py-0.5 rounded border border-amber-200 shadow-2xs text-red-600">{timeLeft.seconds}</span>
+              </div>
+            </div>
           </div>
-          <div className="h-8 w-px bg-stone-200" />
-          <div className="text-left">
-            <p className="text-[10px] text-amber-800 uppercase font-black tracking-wider">Harga Promo Spesial</p>
-            <p className="text-2xl sm:text-3xl font-black text-stone-950">Rp 55.700</p>
-          </div>
-          <span className="text-[10px] bg-red-600 text-white font-black px-2.5 py-1 rounded-full uppercase tracking-wider">
-            Hemat 50%
-          </span>
         </div>
 
         {/* Action Button (No direct price text) */}
