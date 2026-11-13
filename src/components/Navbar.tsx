@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Scissors, Menu, X, ArrowRight, Sparkles } from "lucide-react";
+import { Scissors, Menu, X, ArrowRight, Sparkles, Clock, Flame } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface NavItem {
@@ -12,11 +12,10 @@ interface NavItem {
 }
 
 const NAV_ITEMS: NavItem[] = [
-  { label: "Tampilan Nyata", href: "#preview" },
-  { label: "vs Moka POS", href: "#komparasi", badge: "Hemat 98%" },
-  { label: "Keunggulan", href: "#keunggulan" },
-  { label: "Testimoni", href: "#testimoni" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Tampilan Aplikasi", href: "#preview" },
+  { label: "Beda vs Software Lain", href: "#komparasi", badge: "Hemat 98%" },
+  { label: "Cerita Pemilik", href: "#testimoni" },
+  { label: "Tanya Jawab", href: "#faq" },
 ];
 
 interface NavbarProps {
@@ -26,6 +25,11 @@ interface NavbarProps {
 export default function Navbar({ onOpenPayment }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [countdown, setCountdown] = useState({
+    hours: "07",
+    minutes: "42",
+    seconds: "15",
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,6 +38,29 @@ export default function Navbar({ onOpenPayment }: NavbarProps) {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const calculateTime = () => {
+      const now = new Date();
+      const endOfDay = new Date();
+      endOfDay.setHours(23, 59, 59, 999);
+      const diff = Math.max(0, endOfDay.getTime() - now.getTime());
+
+      const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const m = Math.floor((diff / (1000 * 60)) % 60);
+      const s = Math.floor((diff / 1000) % 60);
+
+      setCountdown({
+        hours: String(h).padStart(2, "0"),
+        minutes: String(m).padStart(2, "0"),
+        seconds: String(s).padStart(2, "0"),
+      });
+    };
+
+    calculateTime();
+    const interval = setInterval(calculateTime, 1000);
+    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
@@ -68,41 +95,55 @@ export default function Navbar({ onOpenPayment }: NavbarProps) {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-[#FAF8F5]/95 backdrop-blur-xl border-b border-stone-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.04)] py-3"
-          : "bg-[#FAF8F5]/85 backdrop-blur-md border-b border-stone-200/60 py-4 sm:py-5"
+          ? "bg-[#FAF7F2]/95 backdrop-blur-xl border-b border-stone-300/80 shadow-[0_4px_25px_rgba(28,25,23,0.06)] py-2.5"
+          : "bg-[#FAF7F2]/90 backdrop-blur-md border-b border-stone-200/70 py-3.5 sm:py-4"
       }`}
     >
-      {/* Barber Pole Accent at very top of navbar */}
-      <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-[repeating-linear-gradient(45deg,#dc2626,#dc2626_8px,#ffffff_8px,#ffffff_16px,#2563eb_16px,#2563eb_24px,#ffffff_24px,#ffffff_32px)] opacity-90" />
+      {/* Authentic Barber Pole Accent Strip (Red, White, Blue Barbershop Signature) */}
+      <div className="absolute top-0 left-0 right-0 h-[3px] bg-[repeating-linear-gradient(45deg,#b91c1c,#b91c1c_10px,#ffffff_10px,#ffffff_20px,#1d4ed8_20px,#1d4ed8_30px,#ffffff_30px,#ffffff_40px)] opacity-95 shadow-xs" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
+        <div className="flex items-center justify-between gap-3">
+          
+          {/* Logo Barbershop Vintage Modern */}
           <Link
             href="/"
-            className="flex items-center gap-2.5 group transition-transform active:scale-95"
+            className="flex items-center gap-2.5 group transition-transform active:scale-95 shrink-0"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-stone-950 shadow-md shadow-amber-500/25 group-hover:rotate-6 transition-transform">
-              <Scissors className="w-5 h-5 -rotate-45" />
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-amber-600 via-amber-700 to-stone-900 flex items-center justify-center text-amber-100 shadow-md shadow-amber-900/20 group-hover:rotate-6 transition-transform border border-amber-500/30">
+              <Scissors className="w-4 h-4 sm:w-5 sm:h-5 -rotate-45" />
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-black tracking-tight text-stone-900 flex items-center gap-1.5 leading-tight">
-                Barber <span className="text-amber-600">Suite</span>
+              <span className="text-lg sm:text-xl font-black tracking-tight text-stone-900 flex items-center gap-1 leading-tight font-serif">
+                Barber <span className="text-amber-700 font-sans font-black">Suite</span>
               </span>
-              <span className="text-[10px] tracking-wider uppercase font-bold text-stone-500">
-                Kasir Barbershop Modern
+              <span className="text-[9px] sm:text-[10px] tracking-wider uppercase font-bold text-stone-500">
+                Sistem Kasir Barbershop
               </span>
             </div>
           </Link>
 
+          {/* Dynamic Countdown Pill in Navbar (Tampil di Desktop & Tablet) */}
+          <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-300 text-stone-900 shadow-xs">
+            <Flame className="w-3.5 h-3.5 text-red-600 animate-pulse" />
+            <span className="text-[11px] font-black uppercase text-amber-950 tracking-wide">Promo 50%:</span>
+            <div className="flex items-center gap-1 font-mono text-xs font-black text-amber-900">
+              <span className="bg-white px-1.5 py-0.5 rounded border border-amber-200">{countdown.hours}</span>
+              <span>:</span>
+              <span className="bg-white px-1.5 py-0.5 rounded border border-amber-200">{countdown.minutes}</span>
+              <span>:</span>
+              <span className="bg-white px-1.5 py-0.5 rounded border border-amber-200 text-red-600">{countdown.seconds}</span>
+            </div>
+          </div>
+
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-1 p-1.5 rounded-full px-4 border bg-stone-100/90 border-stone-200/80 shadow-xs">
+          <nav className="hidden md:flex items-center gap-1 p-1 rounded-full px-3 border bg-white/90 border-stone-200 shadow-xs">
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className="px-3.5 py-1 text-xs font-bold text-stone-700 hover:text-stone-950 hover:bg-white rounded-full transition-all flex items-center gap-1.5"
+                className="px-3 py-1 text-xs font-bold text-stone-700 hover:text-stone-950 hover:bg-[#F4F0E8] rounded-full transition-all flex items-center gap-1.5"
               >
                 <span>{item.label}</span>
                 {item.badge && (
@@ -114,25 +155,30 @@ export default function Navbar({ onOpenPayment }: NavbarProps) {
             ))}
           </nav>
 
-          {/* Desktop CTA Button */}
-          <div className="hidden md:flex items-center gap-3">
+          {/* Desktop CTA Button (No direct price text) */}
+          <div className="hidden sm:flex items-center gap-2.5">
             <button
               type="button"
               onClick={() => onOpenPayment?.()}
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black text-stone-950 bg-gradient-to-r from-amber-400 via-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 border border-amber-300/40 transition-all shadow-[0_4px_16px_rgba(217,119,6,0.25)] hover:scale-105 active:scale-95 cursor-pointer"
+              className="inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl text-xs font-black text-stone-950 bg-gradient-to-r from-amber-400 via-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 border border-amber-500/30 transition-all shadow-md shadow-amber-500/20 hover:scale-105 active:scale-95 cursor-pointer"
             >
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Beli Lisensi — Rp 50.000</span>
+              <span>Beli Sekarang</span>
               <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
             </button>
           </div>
 
-          {/* Mobile Hamburger Button */}
-          <div className="flex md:hidden items-center">
+          {/* Mobile Hamburger Button + Countdown Pill */}
+          <div className="flex sm:hidden items-center gap-2">
+            <div className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-amber-100 border border-amber-300 text-[10px] font-mono font-black text-amber-950">
+              <Clock className="w-3 h-3 text-red-600" />
+              <span>{countdown.hours}:{countdown.minutes}:{countdown.seconds}</span>
+            </div>
+            
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2.5 rounded-xl border border-stone-200 bg-stone-100 text-stone-700 hover:bg-stone-200 transition-colors focus:outline-none"
+              className="p-2 rounded-xl border border-stone-300 bg-white text-stone-700 hover:bg-stone-100 transition-colors focus:outline-none"
               aria-label={isMobileMenuOpen ? "Tutup menu" : "Buka menu"}
             >
               {isMobileMenuOpen ? (
@@ -153,15 +199,26 @@ export default function Navbar({ onOpenPayment }: NavbarProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-x-0 top-[68px] bg-[#FAF8F5] border-b border-stone-200 md:hidden p-6 shadow-2xl"
+            className="fixed inset-x-0 top-[60px] bg-[#FAF7F2] border-b border-stone-300 md:hidden p-5 shadow-2xl"
           >
-            <div className="flex flex-col space-y-3">
+            {/* Mobile Countdown Alert */}
+            <div className="mb-4 p-3 rounded-xl bg-amber-100 border border-amber-300 flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Flame className="w-4 h-4 text-red-600" />
+                <span className="text-xs font-black text-amber-950 uppercase">Diskon 50% Berakhir:</span>
+              </div>
+              <div className="font-mono text-xs font-black text-amber-950 bg-white px-2 py-0.5 rounded border border-amber-300">
+                {countdown.hours}:{countdown.minutes}:{countdown.seconds}
+              </div>
+            </div>
+
+            <div className="flex flex-col space-y-2">
               {NAV_ITEMS.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className="py-2.5 text-base font-bold text-stone-800 hover:text-amber-700 border-b border-stone-100 transition-colors flex items-center justify-between"
+                  className="py-2.5 text-sm font-bold text-stone-800 hover:text-amber-800 border-b border-stone-200/80 transition-colors flex items-center justify-between"
                 >
                   <span>{item.label}</span>
                   {item.badge && (
@@ -172,17 +229,17 @@ export default function Navbar({ onOpenPayment }: NavbarProps) {
                 </a>
               ))}
 
-              <div className="pt-4">
+              <div className="pt-3">
                 <button
                   type="button"
                   onClick={() => {
                     setIsMobileMenuOpen(false);
                     onOpenPayment?.();
                   }}
-                  className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl text-sm font-black text-stone-950 bg-gradient-to-r from-amber-400 via-amber-400 to-amber-500 shadow-md cursor-pointer"
+                  className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-black text-stone-950 bg-gradient-to-r from-amber-400 via-amber-400 to-amber-500 shadow-md cursor-pointer"
                 >
                   <Sparkles className="w-4 h-4" />
-                  <span>Beli Barber Suite — Rp 50.000</span>
+                  <span>Beli Sekarang</span>
                 </button>
               </div>
             </div>

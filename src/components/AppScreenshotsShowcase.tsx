@@ -12,7 +12,6 @@ import {
   ShieldCheck,
   CheckCircle2,
   ArrowRight,
-  ExternalLink,
 } from "lucide-react";
 
 interface ShowcaseTab {
@@ -31,95 +30,95 @@ const TABS: ShowcaseTab[] = [
     id: "kasir",
     label: "Kasir Kilat",
     icon: Smartphone,
-    badge: "MODUL KASIR",
+    badge: "MODUL KASIR MUDAH",
     title: "Layar Kasir Cepat dengan Durasi Pengerjaan",
     description:
-      "Tampilan kasir yang simpel dan responsif. Pilih barber yang bertugas, pilih layanan (Haircut 30m, Wash 45m, Massage 60m, Coloring 90m), lalu langsung selesaikan pembayaran dengan QRIS, Tunai, atau Transfer.",
+      "Tampilan kasir yang simpel dan tidak bikin bingung. Pilih barber yang bertugas, pilih model cukur atau perawatan rambut, lalu langsung selesaikan pembayaran tunai maupun QRIS.",
     highlights: [
-      "Penugasan barber per transaksi (contoh: Barber Irfan)",
-      "Pilihan durasi layanan otomatis untuk kelola antrean",
-      "Filter Terlaris, A-Z, dan Urut Harga",
-      "Dukungan cetak struk Bluetooth thermal instan",
+      "Pilih nama kapster yang mencukur dalam 1 ketukan",
+      "Perkiraan durasi otomatis untuk atur antrean pelanggan",
+      "Pencarian cepat layanan & produk terlaris",
+      "Langsung cetak struk nota via printer Bluetooth",
     ],
     imageSrc: "/screenshots/kasir.jpg",
   },
   {
     id: "beranda",
-    label: "Dashboard & Omset",
+    label: "Pantau Omset",
     icon: BarChart3,
-    badge: "DASHBOARD REAL-TIME",
-    title: "Pantau Omset Harian & Grafik Tren 30 Hari",
+    badge: "GRAFIK OMSET REAL-TIME",
+    title: "Lihat Omset Harian & Tren Penjualan Tiap Saat",
     description:
-      "Dashboard utama yang memperlihatkan omset hari ini, jumlah transaksi selesai, rata-rata belanja per tamu, serta grafik batang tren omset 30 hari secara visual.",
+      "Ketahui persis berapa keuntungan barbershop Anda hari ini, berapa tamu yang sudah dicukur, serta grafik perkembangan omset bulanan secara rapi.",
     highlights: [
-      "Angka omset harian dan jumlah transaksi real-time",
-      "Grafik tren omset 30 hari (harian & bulanan)",
-      "Layanan terlaris bulan ini",
-      "Daftar transaksi terkini lengkap dengan metode pembayaran",
+      "Total uang masuk harian langsung terlihat di layar utama",
+      "Grafik tren omset 30 hari untuk evaluasi kemajuan usaha",
+      "Daftar layanan potong rambut paling favorit",
+      "Riwayat semua transaksi yang selesai hari ini",
     ],
     imageSrc: "/screenshots/beranda.jpg",
   },
   {
     id: "laporan",
-    label: "Laporan & Ekspor",
+    label: "Laporan Keuangan",
     icon: FileSpreadsheet,
-    badge: "ANALITIK BISNIS",
-    title: "Laporan Keuangan dengan Ekspor PDF & Excel CSV",
+    badge: "REKAP PEMBUKUAN",
+    title: "Laporan Keuangan Rapi Siap Cetak & Ekspor Excel",
     description:
-      "Rekap keuangan lengkap dengan pemisahan omset per layanan, komisi per barber, dan metode pembayaran. Anda bisa langsung mengunduh laporan dalam format CSV (Excel UTF-8 BOM) dan dokumen PDF siap cetak.",
+      "Tinggalkan buku tulis manual. Rekap pemasukan per kasir, komisi kapster, hingga rincian pembayaran tunai dan QRIS bisa langsung Anda download ke format Excel maupun file PDF siap cetak.",
     highlights: [
-      "Ekspor 1-klik ke format CSV (Excel) & PDF",
-      "Rincian pendapatan per barber untuk hitung gaji transparan",
-      "Pemisahan transaksi QRIS, Transfer Bank, dan Tunai",
-      "Filter fleksibel: Harian, Mingguan, Bulanan, dan Rentang Kustom",
+      "Download laporan keuangan ke Excel (CSV) & PDF dalam 1 klik",
+      "Rincian komisi per kapster untuk hitung bagi hasil tanpa curiga",
+      "Pemisahan uang tunai di laci kasir vs uang masuk QRIS/Transfer",
+      "Pilihan filter harian, mingguan, maupun bulanan",
     ],
     imageSrc: "/screenshots/laporan.jpg",
   },
   {
     id: "pelanggan",
-    label: "CRM & WhatsApp",
+    label: "Database Tamu",
     icon: Users2,
-    badge: "RETENSI PELANGGAN",
-    title: "Database Pelanggan & Follow-Up WhatsApp Cerdas",
+    badge: "PELANGGAN BALIK LAGI",
+    title: "Database Pelanggan & Sapaan WhatsApp Otomatis",
     description:
-      "Simpan histori transaksi tiap tamu. Filter otomatis tamu yang 'Belum berkunjung > 30 hari' dan sapa mereka kembali dengan template pesan WhatsApp dinamis agar kembali potong rambut di barbershop Anda.",
+      "Simpan nomor dan riwayat potong rambut tamu Anda. Cari tamu yang sudah lebih dari sebulan belum potong rambut, lalu sapa kembali via WhatsApp agar jadwal cukurnya kembali terisi.",
     highlights: [
-      "Filter cerdas: Tamu yang belum berkunjung > 30 hari",
-      "Template WhatsApp dinamis: 'Halo {nama}, sudah {minggu} minggu...'",
-      "Riwayat total nominal belanja dan frekuensi kunjungan tiap tamu",
-      "Pencarian cepat berdasarkan nama atau nomor WhatsApp",
+      "Otomatis tandai pelanggan yang lama tidak berkunjung",
+      "Template pesan ramah WhatsApp siap kirim",
+      "Catat model rambut favorit dan nomor kontak tamu",
+      "Pencarian nama atau nomor pelanggan super cepat",
     ],
     imageSrc: "/screenshots/pelanggan.jpg",
   },
   {
     id: "barber",
-    label: "Manajemen Barber",
+    label: "Bagi Hasil Kapster",
     icon: Scissors,
-    badge: "PERFORMA TIM",
-    title: "Kelola Tim Kapster & Pantau Performa Individu",
+    badge: "KOMISI TRANSPARAN",
+    title: "Atur Tim Kapster & Bagi Hasil Adil Tanpa Selisih",
     description:
-      "Ketahui persis kontribusi setiap barber. Pantau berapa jumlah transaksi yang ditangani, jumlah pelanggan unik, serta total omset yang dihasilkan masing-masing kapster tanpa saling curiga.",
+      "Cegah kesalahpahaman bagi hasil antara pemilik dan tukang cukur. Semua jumlah kepala yang dicukur dan total komisi tercatat otomatis dan transparan.",
     highlights: [
-      "Status aktif / nonaktif untuk tiap kapster",
-      "Pelacakan jumlah tamu unik yang dicukur tiap barber",
-      "Rekap total omset per barber untuk memudahkan bagi hasil",
-      "Tambah dan atur profil kapster tanpa batas",
+      "Pantau berapa tamu yang dicukur oleh masing-masing kapster",
+      "Hitungan bagi hasil otomatis sesuai kesepakatan komisi",
+      "Bebas tambah kapster baru tanpa batas",
+      "Status kapster aktif atau sedang libur shift",
     ],
     imageSrc: "/screenshots/barber.jpg",
   },
   {
     id: "backup",
-    label: "Offline & Keamanan",
+    label: "Aman & Bebas Offline",
     icon: ShieldCheck,
-    badge: "KEAMANAN MAKSIMAL",
-    title: "100% Offline-First SQLite Lokal & Backup Terenkripsi",
+    badge: "PRIVASI 100% AMAN",
+    title: "Bisa Dipakai Tanpa Internet & Data Toko Milik Anda Penuh",
     description:
-      "Data tersimpan 100% di memori perangkat Anda dengan mesin SQLite lokal. Tidak ada server cloud luar yang mengintip data finansial Anda. Buat backup file .bms dengan checksum SHA-256 dan kunci akses dengan PIN aplikasi.",
+      "Aplikasi tetap bisa melayani kasir meski sinyal ponsel hilang atau sedang mati lampu. Semua data tersimpan aman di HP Anda sendiri tanpa diintip server luar, lengkap dengan kunci PIN pengaman.",
     highlights: [
-      "100% offline — Tidak butuh koneksi internet untuk beroperasi",
-      "Ekspor file cadangan .bms dengan verifikasi checksum SHA-256",
-      "Snapshot otomatis lokal sebagai jaring pengaman data",
-      "PIN Aplikasi opsional untuk mencegah akses tidak berwenang",
+      "100% tetap jalan walau tanpa kuota maupun jaringan Wi-Fi",
+      "Data finansial toko aman tersimpan di HP Anda",
+      "Fitur kunci PIN agar staf kasir tidak sembarangan buka pembukuan",
+      "Cadangkan (backup) data toko dengan mudah kapan pun",
     ],
     imageSrc: "/screenshots/backup.jpg",
   },
@@ -134,84 +133,80 @@ export default function AppScreenshotsShowcase({ onOpenPayment }: AppScreenshots
   const activeTab = TABS.find((t) => t.id === activeTabId) || TABS[0];
 
   return (
-    <section id="preview" className="py-24 bg-[#FAF8F5] border-t border-stone-200/90">
+    <section id="preview" className="py-20 sm:py-24 bg-[#FAF7F2] border-t border-stone-300/80">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header (Moka POS style) */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <span className="text-xs font-black text-amber-950 bg-amber-200/80 border border-amber-300 px-4 py-1 rounded-full uppercase tracking-wider">
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-14">
+          <span className="text-xs font-black text-amber-950 bg-amber-200/90 border border-amber-300/80 px-4 py-1.5 rounded-full uppercase tracking-wider">
             TAMPILAN ASLI APLIKASI
           </span>
 
-          <h2 className="mt-4 text-3xl sm:text-5xl font-black text-stone-900 tracking-tight leading-tight">
-            Lihat Langsung Tampilan Nyata Barber Suite
+          <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-black text-stone-900 tracking-tight leading-tight">
+            Lihat Langsung Kemudahan Barber Suite
           </h2>
 
-          <p className="mt-4 text-stone-600 text-base sm:text-lg">
-            Antarmuka yang bersih, modern, dan dirancang khusus untuk kenyamanan layar
-            HP Android kasir barbershop Anda.
+          <p className="mt-3 sm:mt-4 text-stone-600 text-sm sm:text-base lg:text-lg">
+            Antarmuka yang bersih, mudah dipahami, dan dirancang khusus agar kasir barbershop Anda bekerja cepat tanpa antrean menumpuk.
           </p>
         </div>
 
-        {/* Feature Navigation Tabs (Pill Bar) */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12 bg-white/80 p-2 rounded-2xl border border-stone-200 max-w-3xl mx-auto shadow-xs">
+        {/* Tab Navigation Pill Bar */}
+        <div className="flex items-center justify-start sm:justify-center gap-2 overflow-x-auto pb-4 mb-8 sm:mb-10 no-scrollbar">
           {TABS.map((tab) => {
             const Icon = tab.icon;
-            const isActive = activeTabId === tab.id;
+            const isActive = tab.id === activeTabId;
             return (
               <button
                 key={tab.id}
-                type="button"
                 onClick={() => setActiveTabId(tab.id)}
-                className={`flex items-center gap-2 px-3.5 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all shrink-0 cursor-pointer ${
                   isActive
-                    ? "bg-[#111827] text-amber-400 shadow-sm"
-                    : "text-stone-600 hover:text-stone-950 hover:bg-stone-100"
+                    ? "bg-stone-900 text-amber-300 shadow-md scale-102 border border-amber-400/40"
+                    : "bg-white text-stone-700 hover:text-stone-950 hover:bg-[#F2ECE1] border border-stone-200"
                 }`}
               >
-                <Icon className="w-4 h-4" />
+                <Icon className={`w-4 h-4 ${isActive ? "text-amber-400" : "text-stone-500"}`} />
                 <span>{tab.label}</span>
               </button>
             );
           })}
         </div>
 
-        {/* Tab Content Display: Left Details, Right Real Screenshot */}
-        <div className="bg-white rounded-3xl border-2 border-stone-200 p-6 sm:p-10 shadow-lg">
+        {/* Main Showcase Showcase Card */}
+        <div className="bg-white rounded-3xl border-2 border-stone-300/80 shadow-xl overflow-hidden p-6 sm:p-10 lg:p-12">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab.id}
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.3 }}
-              className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center"
+              transition={{ duration: 0.25 }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
             >
-              {/* Left Column: Feature Explanation */}
-              <div className="lg:col-span-7 space-y-6">
-                <div>
-                  <span className="text-[11px] font-black uppercase tracking-wider text-amber-800 bg-amber-100 border border-amber-200 px-3 py-1 rounded-full">
-                    {activeTab.badge}
-                  </span>
+              {/* Left Column: Feature Narrative */}
+              <div className="lg:col-span-7 space-y-5 text-left order-2 lg:order-1">
+                <span className="inline-block text-[11px] font-black tracking-wider text-amber-900 bg-amber-100 border border-amber-300 px-3 py-1 rounded-full uppercase">
+                  {activeTab.badge}
+                </span>
 
-                  <h3 className="text-2xl sm:text-3xl font-black text-stone-900 mt-4 leading-tight">
-                    {activeTab.title}
-                  </h3>
+                <h3 className="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight leading-tight">
+                  {activeTab.title}
+                </h3>
 
-                  <p className="mt-3 text-stone-600 text-sm sm:text-base leading-relaxed font-normal">
-                    {activeTab.description}
-                  </p>
-                </div>
+                <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
+                  {activeTab.description}
+                </p>
 
-                {/* Highlights List with Green Checkmarks */}
-                <div className="space-y-3 pt-2">
-                  <p className="text-xs font-black uppercase tracking-wider text-stone-500">
-                    Keunggulan Modul Ini:
-                  </p>
+                {/* Highlights List */}
+                <div className="pt-2">
+                  <h4 className="text-xs font-black uppercase tracking-wider text-stone-900 mb-3">
+                    Keunggulan Fitur Ini:
+                  </h4>
                   <ul className="space-y-2.5">
                     {activeTab.highlights.map((h, i) => (
-                      <li key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-800">
-                        <div className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 mt-0.5 border border-emerald-200">
-                          <CheckCircle2 className="w-3.5 h-3.5 stroke-[2.5]" />
+                      <li key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700">
+                        <div className="w-4 h-4 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 mt-0.5 border border-emerald-300">
+                          <CheckCircle2 className="w-3 h-3 stroke-[2.5]" />
                         </div>
                         <span className="font-semibold">{h}</span>
                       </li>
@@ -219,21 +214,21 @@ export default function AppScreenshotsShowcase({ onOpenPayment }: AppScreenshots
                   </ul>
                 </div>
 
-                {/* Bottom CTA for this feature */}
+                {/* Bottom CTA Button (No direct price text) */}
                 <div className="pt-4 border-t border-stone-100 flex items-center gap-4">
                   <button
                     type="button"
                     onClick={() => onOpenPayment?.()}
-                    className="inline-flex items-center gap-2 text-xs font-black text-stone-900 bg-amber-400 hover:bg-amber-300 px-5 py-2.5 rounded-xl shadow-xs transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-2 text-xs sm:text-sm font-black text-stone-950 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 px-6 py-3 rounded-xl shadow-md shadow-amber-500/20 transition-all cursor-pointer hover:scale-102"
                   >
-                    <span>Dapatkan Fitur Ini — Rp 50.000</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <span>Dapatkan Akses Sekarang</span>
+                    <ArrowRight className="w-4 h-4 stroke-[2.5]" />
                   </button>
                 </div>
               </div>
 
               {/* Right Column: Real Screenshot in Sleek Smartphone Frame */}
-              <div className="lg:col-span-5 flex justify-center">
+              <div className="lg:col-span-5 flex justify-center order-1 lg:order-2">
                 <div className="relative w-full max-w-[280px] sm:max-w-[310px] rounded-[36px] bg-stone-950 p-2.5 border-[6px] border-stone-900 shadow-2xl overflow-hidden ring-1 ring-stone-800">
                   {/* Smartphone dynamic notch */}
                   <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-20 h-4 bg-stone-900 rounded-full z-20" />

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Check, X, Sparkles, Zap, ShieldCheck } from "lucide-react";
+import { Check, X, Sparkles, Zap, ArrowRight } from "lucide-react";
 
 interface MokaComparisonProps {
   onOpenPayment?: () => void;
@@ -10,193 +10,109 @@ interface MokaComparisonProps {
 export default function MokaComparison({ onOpenPayment }: MokaComparisonProps) {
   const comparisonItems = [
     {
-      feature: "Biaya / Skema Pembayaran",
-      moka: "Rp 299.000 / Bulan (Rp 3.588.000 / Tahun)",
-      mokaGood: false,
-      barberSuite: "Cuma Rp 50.000 Sekali Bayar Selamanya",
-      barberSuiteGood: true,
+      feature: "Biaya Aplikasi",
+      barberSuite: "Cuma Rp 55.700 sekali bayar (Hemat 98%)",
+      moka: "Rp 299.000/bulan (~Rp 3,6 Jt tiap tahun)",
     },
     {
-      feature: "Ketergantungan Internet",
-      moka: "Wajib Online — Sering error saat sinyal drop",
-      mokaGood: false,
-      barberSuite: "100% Offline-First (Mesin SQLite Lokal)",
-      barberSuiteGood: true,
+      feature: "Koneksi Internet",
+      barberSuite: "100% bebas offline tanpa kuota/sinyal",
+      moka: "Wajib online, transaksi macet saat internet drop",
     },
     {
-      feature: "Bagi Hasil & Komisi Barber",
-      moka: "Pengaturan rumit & butuh paket tambahan",
-      mokaGood: false,
-      barberSuite: "Hitung Otomatis per Barber & Shift Transparan",
-      barberSuiteGood: true,
+      feature: "Bagi Hasil Kapster",
+      barberSuite: "Dihitung otomatis per barber & transparan",
+      moka: "Rumit diatur & butuh biaya paket tambahan",
     },
     {
-      feature: "Follow-Up WhatsApp Pelanggan",
-      moka: "Fitur SMS berbayar tambahan per pesan",
-      mokaGood: false,
-      barberSuite: "Filter >30 Hari & Template WhatsApp Gratis",
-      barberSuiteGood: true,
-    },
-    {
-      feature: "Privasi & Kepemilikan Data",
-      moka: "Data omset tersimpan di server cloud pihak ketiga",
-      mokaGood: false,
-      barberSuite: "Data 100% Milik Anda di HP + Backup .bms SHA-256",
-      barberSuiteGood: true,
-    },
-    {
-      feature: "Ekspor Laporan Keuangan",
-      moka: "Harus login via website dashboard terpisah",
-      mokaGood: false,
-      barberSuite: "Ekspor Langsung PDF & CSV (Excel) dari HP",
-      barberSuiteGood: true,
+      feature: "Data & Omset Toko",
+      barberSuite: "100% milik Anda, tersimpan aman di HP",
+      moka: "Tersimpan di server cloud pihak ketiga",
     },
   ];
 
   return (
-    <section id="komparasi" className="py-20 sm:py-24 bg-white border-y border-stone-200/90">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-red-100 text-red-900 text-xs font-black mb-3 border border-red-200">
+    <section id="komparasi" className="py-12 sm:py-16 bg-[#F5F1E8] border-y border-stone-300/80">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        
+        {/* Header Compact */}
+        <div className="text-center max-w-xl mx-auto mb-6 sm:mb-8">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-100 text-red-900 text-[11px] font-black mb-2 border border-red-200">
             <Zap className="w-3.5 h-3.5 text-red-700" />
-            <span>MENGAPA LEBIH UNGGUL DARI MOKA POS?</span>
+            <span>MENGAPA LEBIH UNGGUL DARI SOFTWARE LAIN?</span>
           </div>
 
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-stone-900 tracking-tight leading-tight">
-            Kelebihan Barber Suite dibanding Software Langganan
+          <h2 className="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight leading-tight">
+            Lebih Hemat & Praktis Khusus Barbershop
           </h2>
-
-          <p className="mt-3 sm:mt-4 text-stone-600 text-sm sm:text-base lg:text-lg">
-            Moka POS bagus untuk restoran besar dengan anggaran jutaan rupiah per tahun.
-            Namun untuk barbershop & salon mandiri, <strong className="text-stone-900 font-bold">Barber Suite adalah pemenangnya</strong>.
+          <p className="mt-1 text-xs sm:text-sm text-stone-600">
+            Tak perlu bayar sewa mahal jutaan rupiah per tahun hanya untuk kasir pangkas rambut.
           </p>
         </div>
 
-        {/* Head-to-Head Comparison Card Container */}
-        <div className="rounded-3xl border-2 border-stone-300 overflow-hidden shadow-lg bg-[#FAF8F5]">
+        {/* Ultra-Compact Head-to-Head Comparison Card (Zero-Scroll for both Web & Mobile) */}
+        <div className="rounded-2xl border-2 border-amber-800/20 overflow-hidden shadow-md bg-white">
           
-          {/* 1. Mobile View (Zero Horizontal Scrolling, Stacked Responsive Cards) */}
-          <div className="block md:hidden divide-y divide-stone-200">
+          {/* Table Header */}
+          <div className="grid grid-cols-12 bg-stone-900 text-white text-[11px] sm:text-xs font-black uppercase tracking-wider p-2.5 sm:p-3 items-center">
+            <div className="col-span-4 sm:col-span-4 pl-1 text-stone-300">Kebutuhan</div>
+            <div className="col-span-4 sm:col-span-4 text-amber-400 flex items-center gap-1">
+              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+              <span>Barber Suite</span>
+            </div>
+            <div className="col-span-4 sm:col-span-4 text-stone-400">Software Lain</div>
+          </div>
+
+          {/* 4 Super-Compact Comparison Rows */}
+          <div className="divide-y divide-stone-100 text-xs sm:text-sm">
             {comparisonItems.map((item, idx) => (
               <div
                 key={item.feature}
-                className={`p-4 space-y-2.5 ${idx % 2 === 0 ? "bg-white" : "bg-[#FAF8F5]"}`}
+                className={`grid grid-cols-12 p-2.5 sm:p-3.5 items-center gap-1 sm:gap-2 ${
+                  idx % 2 === 0 ? "bg-[#FAF7F2]/60" : "bg-white"
+                }`}
               >
                 {/* Feature Name */}
-                <div className="text-xs font-black uppercase tracking-wider text-stone-700 flex items-center justify-between">
-                  <span>{item.feature}</span>
+                <div className="col-span-4 font-bold text-stone-900 text-[11px] sm:text-xs pr-1 leading-snug">
+                  {item.feature}
                 </div>
 
-                {/* Barber Suite Pro (Highlighted Winner) */}
-                <div className="p-3 rounded-2xl bg-amber-50/90 border-2 border-amber-400 shadow-xs">
-                  <div className="flex items-center justify-between gap-1.5 text-xs font-black text-amber-950 mb-1">
-                    <div className="flex items-center gap-1.5">
-                      <Sparkles className="w-3.5 h-3.5 text-amber-700" />
-                      <span>Barber Suite Pro</span>
-                    </div>
-                    <span className="text-[10px] bg-emerald-600 text-white font-black px-2 py-0.5 rounded-full">
-                      LEBIH UNGGUL
-                    </span>
+                {/* Barber Suite Advantage */}
+                <div className="col-span-4 font-bold text-emerald-950 bg-amber-100/70 p-1.5 rounded-lg border border-amber-300/60 flex items-start gap-1 sm:gap-1.5 leading-snug text-[11px] sm:text-xs">
+                  <div className="w-3.5 h-3.5 rounded-full bg-emerald-600 text-white flex items-center justify-center shrink-0 mt-0.5">
+                    <Check className="w-2.5 h-2.5 stroke-[3]" />
                   </div>
-                  <div className="flex items-start gap-2 pt-0.5">
-                    <div className="w-4 h-4 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 mt-0.5 border border-emerald-300">
-                      <Check className="w-3 h-3 stroke-[3]" />
-                    </div>
-                    <span className="text-xs font-bold text-stone-900 leading-snug">
-                      {item.barberSuite}
-                    </span>
-                  </div>
+                  <span>{item.barberSuite}</span>
                 </div>
 
-                {/* Moka POS / Others (Muted Downside) */}
-                <div className="p-2.5 rounded-xl bg-stone-50 border border-stone-200">
-                  <div className="text-[10px] font-semibold text-stone-500 uppercase tracking-wider mb-1">
-                    Moka POS / Pawoon / Majoo
+                {/* Other Software Downside */}
+                <div className="col-span-4 text-stone-500 p-1 rounded-lg flex items-start gap-1 sm:gap-1.5 leading-snug text-[10px] sm:text-xs">
+                  <div className="w-3.5 h-3.5 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center shrink-0 mt-0.5">
+                    <X className="w-2.5 h-2.5 stroke-[2.5]" />
                   </div>
-                  <div className="flex items-start gap-2">
-                    <div className="w-4 h-4 rounded-full bg-rose-100 text-rose-700 flex items-center justify-center shrink-0 mt-0.5">
-                      <X className="w-3 h-3 stroke-[2.5]" />
-                    </div>
-                    <span className="text-xs text-stone-600 leading-snug">
-                      {item.moka}
-                    </span>
-                  </div>
+                  <span>{item.moka}</span>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* 2. Desktop & Tablet View (Traditional 3-Column Table) */}
-          <div className="hidden md:block overflow-x-auto">
-            <table className="w-full text-left border-collapse min-w-[650px]">
-              <thead>
-                <tr className="border-b border-stone-200 bg-stone-100 text-xs uppercase tracking-wider font-bold">
-                  <th className="p-4 sm:p-5 w-1/3 text-stone-700">Fitur & Kriteria</th>
-                  <th className="p-4 sm:p-5 w-1/3 bg-amber-200/90 text-amber-950 font-black border-x-2 border-amber-400">
-                    <div className="flex items-center gap-2">
-                      <Sparkles className="w-4 h-4 text-amber-700" />
-                      <span className="text-sm">Barber Suite Pro</span>
-                    </div>
-                  </th>
-                  <th className="p-4 sm:p-5 w-1/3 text-stone-500">
-                    Moka POS / Pawoon / Majoo
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-stone-200 text-xs sm:text-sm">
-                {comparisonItems.map((item, idx) => (
-                  <tr
-                    key={item.feature}
-                    className={idx % 2 === 0 ? "bg-white" : "bg-[#FAF8F5]"}
-                  >
-                    <td className="p-4 sm:p-5 font-bold text-stone-900">
-                      {item.feature}
-                    </td>
-
-                    {/* Barber Suite (Highlighted) */}
-                    <td className="p-4 sm:p-5 bg-amber-50/70 font-black text-stone-950 border-x-2 border-amber-400">
-                      <div className="flex items-center gap-2">
-                        <div className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 border border-emerald-300">
-                          <Check className="w-3.5 h-3.5 stroke-[3]" />
-                        </div>
-                        <span>{item.barberSuite}</span>
-                      </div>
-                    </td>
-
-                    {/* Moka POS */}
-                    <td className="p-4 sm:p-5 text-stone-500">
-                      <div className="flex items-center gap-2">
-                        <div className="w-5 h-5 rounded-full bg-rose-100 text-rose-700 flex items-center justify-center shrink-0">
-                          <X className="w-3.5 h-3.5 stroke-[2.5]" />
-                        </div>
-                        <span>{item.moka}</span>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          {/* Bottom Banner */}
-          <div className="p-4 sm:p-5 bg-stone-900 text-white flex flex-col sm:flex-row items-center justify-between gap-4">
+          {/* Compact Bottom Banner with Action Button */}
+          <div className="p-3 sm:p-3.5 bg-stone-900 text-white flex flex-col sm:flex-row items-center justify-between gap-2.5">
             <div className="text-center sm:text-left">
-              <p className="font-bold text-xs sm:text-sm text-amber-300">
-                💰 Hemat lebih dari Rp 3.500.000 setiap tahun bersama Barber Suite
-              </p>
-              <p className="text-[11px] sm:text-xs text-stone-400 mt-0.5">
-                Investasi sekali Rp 50.000, tidak ada tagihan kartu kredit bulanan.
-              </p>
+              <span className="font-black text-xs text-amber-300">
+                💰 Hemat Rp 3.500.000+ setiap tahun tanpa tagihan bulanan
+              </span>
             </div>
             <button
               type="button"
               onClick={() => onOpenPayment?.()}
-              className="w-full sm:w-auto px-6 py-3 sm:py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-stone-950 font-black text-xs uppercase tracking-wider shrink-0 transition-colors shadow-xs cursor-pointer text-center"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-5 py-2 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-stone-950 font-black text-xs uppercase tracking-wider transition-all cursor-pointer shadow-xs active:scale-95"
             >
-              Beli Sekarang — Rp 50.000
+              <span>Ambil Promo Sekarang</span>
+              <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
             </button>
           </div>
+
         </div>
       </div>
     </section>

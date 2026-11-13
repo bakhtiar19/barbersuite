@@ -2,40 +2,40 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, HelpCircle, MessageCircle } from "lucide-react";
+import { ChevronDown, HelpCircle } from "lucide-react";
 
 const FAQS = [
   {
-    q: "Apakah aplikasi ini bisa digunakan secara offline tanpa internet?",
-    a: "Bisa! Barber Suite dapat digunakan untuk input transaksi dan cetak nota secara offline. Koneksi internet hanya dibutuhkan saat backup database ke cloud atau mengunduh pembaruan fitur.",
+    q: "Apakah aplikasi ini bisa digunakan tanpa koneksi internet (offline)?",
+    a: "Bisa sekali! Barber Suite dirancang agar transaksi kasir dan cetak nota Bluetooth tetap berjalan normal meski sinyal internet drop atau sedang mati lampu. Anda tidak bergantung pada kuota internet.",
   },
   {
-    q: "Bisa dipakai di berapa HP / tablet?",
-    a: "Satu lisensi Rp 50.000 berlaku untuk 1 perangkat Android. Jika Anda memiliki cabang barbershop lain, Anda cukup membeli lisensi tambahan dengan harga promo yang sama.",
+    q: "Bisa dipakai di berapa smartphone atau tablet?",
+    a: "Satu lisensi berlaku untuk 1 perangkat Android. Jika Anda memiliki cabang barbershop atau tablet tambahan, Anda cukup membeli lisensi tambahan dengan harga promo yang sama.",
   },
   {
-    q: "Bagaimana cara instalasi aplikasinya?",
-    a: "Sangat praktis. Begitu pembayaran selesai, link download file APK langsung tersedia. Anda tinggal unduh di HP Android Anda dan klik Pasang / Install. Tim kami siap memandu via WhatsApp.",
+    q: "Bagaimana cara memasang (instalasi) aplikasinya?",
+    a: "Sangat mudah dan cepat. Begitu pembayaran selesai, link unduh aplikasi langsung dikirimkan. Anda tinggal buka di HP Android dan klik pasang (install). Tim kami juga siap memandu via WhatsApp sampai aplikasi aktif.",
   },
   {
-    q: "Apakah data pelanggan dan transaksi saya aman?",
-    a: "100% aman. Data tersimpan di memori perangkat Anda sendiri. Tidak ada data pelanggan atau omset Anda yang dibagikan atau dijual ke pihak lain.",
+    q: "Apakah data omset dan pelanggan saya aman?",
+    a: "100% aman dan rahasia. Semua data pembukuan tersimpan langsung di memori HP Anda sendiri, tidak dikirim atau dijual ke server luar mana pun.",
   },
   {
-    q: "Apakah ada garansi uang kembali?",
-    a: "Ya! Kami memberikan garansi uang kembali 100% dalam 7 hari jika Anda merasa aplikasi ini tidak cocok untuk operasional barbershop Anda.",
+    q: "Apakah ada garansi jika tidak cocok?",
+    a: "Ada! Kami memberikan garansi 100% uang kembali dalam 7 hari jika Anda merasa aplikasi ini kurang sesuai untuk alur kerja barbershop Anda.",
   },
   {
-    q: "Bisa dipakai untuk salon wanita atau pangkas rambut biasa?",
-    a: "Tentu bisa! Nama layanan, daftar harga, dan produk bisa Anda ganti dan tambah sesuka hati sesuai kebutuhan usaha Anda.",
+    q: "Bisa dipakai untuk salon rambut atau pangkas rambut biasa?",
+    a: "Tentu bisa! Nama layanan, daftar harga paket cukur, durasi, hingga produk pomade atau pewarna rambut bisa Anda sesuaikan dengan bebas.",
   },
   {
     q: "Apakah ada biaya langganan bulanan di kemudian hari?",
-    a: "Sama sekali tidak ada! Cukup bayar Rp 50.000 sekali saja di awal, aplikasi bisa dipakai seumur hidup tanpa biaya tersembunyi.",
+    a: "Sama sekali tidak ada! Cukup bayar satu kali di awal saat harga promo, aplikasi menjadi milik Anda selamanya tanpa biaya tersembunyi.",
   },
   {
-    q: "Bagaimana jika saya membutuhkan bantuan teknis?",
-    a: "Tim customer support kami siap melayani dan mendampingi pertanyaan Anda melalui WhatsApp setiap hari.",
+    q: "Bagaimana jika saya butuh bantuan teknis?",
+    a: "Tim bantuan kami siap mendampingi pertanyaan Anda melalui WhatsApp setiap hari.",
   },
 ];
 
@@ -47,44 +47,51 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="py-24 bg-[#f5f2eb] border-t border-stone-200/80">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="faq" className="py-20 sm:py-24 bg-[#F5F1E8] border-t border-stone-300/80">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-14">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-amber-200/90 text-amber-950 text-xs font-bold mb-3 border border-amber-300">
-            <HelpCircle className="w-3.5 h-3.5 text-amber-700" />
+        <div className="text-center max-w-xl mx-auto mb-12 sm:mb-14">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-amber-100 text-amber-950 text-xs font-black mb-3 border border-amber-300">
+            <HelpCircle className="w-3.5 h-3.5 text-amber-800" />
             <span>TANYA JAWAB UMUM</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl font-black text-stone-900 tracking-tight">
-            Pertanyaan yang Kerap Ditanyakan
+            Pertanyaan yang Sering Diajukan
           </h2>
 
           <p className="mt-3 text-stone-600 text-sm sm:text-base">
-            Masih ada pertanyaan yang belum tercantum? Tim kami siap menjawab via WhatsApp.
+            Semua hal yang perlu Anda ketahui tentang kemudahan menggunakan Barber Suite.
           </p>
         </div>
 
-        {/* Accordions */}
+        {/* Accordion List */}
         <div className="space-y-3">
-          {FAQS.map((item, idx) => {
+          {FAQS.map((faq, idx) => {
             const isOpen = openIndex === idx;
             return (
               <div
-                key={idx}
-                className="bg-white rounded-2xl border border-stone-200 shadow-xs overflow-hidden transition-colors"
+                key={faq.q}
+                className="rounded-2xl border-2 border-stone-200/90 overflow-hidden bg-white shadow-xs transition-colors"
               >
                 <button
                   type="button"
                   onClick={() => toggleFAQ(idx)}
-                  className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 font-bold text-stone-900 text-sm sm:text-base hover:text-amber-700 transition-colors cursor-pointer"
+                  className="w-full text-left p-4 sm:p-5 flex items-center justify-between gap-4 cursor-pointer hover:bg-[#FAF7F2]/50 transition-colors"
+                  aria-expanded={isOpen}
                 >
-                  <span>{item.q}</span>
-                  <ChevronDown
-                    className={`w-4 h-4 text-stone-400 shrink-0 transition-transform duration-200 ${
-                      isOpen ? "rotate-180 text-amber-600" : ""
+                  <span className="text-sm sm:text-base font-bold text-stone-900">
+                    {faq.q}
+                  </span>
+                  <div
+                    className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-transform duration-200 ${
+                      isOpen
+                        ? "bg-amber-100 text-amber-900 rotate-180"
+                        : "bg-stone-100 text-stone-500"
                     }`}
-                  />
+                  >
+                    <ChevronDown className="w-4 h-4" />
+                  </div>
                 </button>
 
                 <AnimatePresence initial={false}>
@@ -96,8 +103,8 @@ export default function FAQ() {
                       transition={{ duration: 0.2 }}
                       className="overflow-hidden"
                     >
-                      <div className="px-4 sm:px-5 pb-5 text-xs sm:text-sm text-stone-600 leading-relaxed border-t border-stone-100 pt-3 font-normal">
-                        {item.a}
+                      <div className="px-4 pb-4 sm:px-5 sm:pb-5 pt-0 text-xs sm:text-sm text-stone-600 leading-relaxed border-t border-stone-100 mt-1">
+                        {faq.a}
                       </div>
                     </motion.div>
                   )}

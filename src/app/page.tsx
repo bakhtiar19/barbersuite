@@ -5,7 +5,6 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import AppScreenshotsShowcase from "@/components/AppScreenshotsShowcase";
 import MokaComparison from "@/components/MokaComparison";
-import WhyChooseUs from "@/components/WhyChooseUs";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import CTAFinal from "@/components/CTAFinal";
@@ -29,34 +28,31 @@ export default function Home() {
       <Navbar onOpenPayment={handleOpenPayment} />
 
       <main>
-        {/* 1. Hero: Full Background Stylish Capster + 1 App Cashier Mockup + Elegant Highlight */}
+        {/* 1. Hero: Capster dengan Smartphone + Heading Copywriting + Beli Sekarang */}
         <HeroSection onOpenPayment={handleOpenPayment} />
 
-        {/* 2. App Screenshots Showcase: Tampilan Nyata Aplikasi Barber Suite v4.2.0 */}
+        {/* 2. Tampilan Asli Aplikasi: Bukti Visual Nyata Tanpa Bahasa Teknis Rumit */}
         <AppScreenshotsShowcase onOpenPayment={handleOpenPayment} />
 
-        {/* 3. Head-to-Head vs Moka POS: Kenapa Barber Suite Lebih Unggul & Hemat */}
+        {/* 3. Komparasi Ringkas vs Moka POS: Super Padat & Bebas Scroll */}
         <MokaComparison onOpenPayment={handleOpenPayment} />
 
-        {/* 4. Why Choose Us: 4 Nilai Lebih + Statistik */}
-        <WhyChooseUs />
-
-        {/* 5. Testimonials: Cerita nyata pemilik barbershop */}
+        {/* 4. Testimoni: Kisah Nyata Pemilik Barbershop */}
         <Testimonials />
 
-        {/* 6. FAQ: Tanya jawab lengkap seputar instalasi & offline engine */}
+        {/* 5. Tanya Jawab (FAQ): Menjawab Keraguan dengan Bahasa Ramah */}
         <FAQ />
 
-        {/* 7. Closing CTA: Penutup Beli Langsung (Hard-sell) */}
+        {/* 6. Penawaran Promo Terbatas: Harga Coret Rp 111.400 -> Rp 55.700 */}
         <CTAFinal onOpenPayment={handleOpenPayment} />
       </main>
 
       <Footer />
 
-      {/* Sticky Mobile Buy Bar */}
+      {/* Bar Beli Cepat Khusus Mobile */}
       <StickyMobileCTA onOpenPayment={handleOpenPayment} />
 
-      {/* Direct Buy / Checkout Modal */}
+      {/* Modal Checkout Pembayaran */}
       <PaymentModal
         isOpen={isPaymentModalOpen}
         onClose={handleClosePayment}

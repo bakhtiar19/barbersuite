@@ -112,7 +112,7 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
 
   const handlePayViaWhatsApp = () => {
     const text = encodeURIComponent(
-      `Halo Admin Barber Suite! Saya ingin membeli aplikasi kasir (Rp 50.000).\n\nData Pembeli:\n• Nama: ${formData.name}\n• Email: ${formData.email}\n• WhatsApp: ${formData.whatsapp}\n• Order ID: ${demoOrderId || "BS-" + Date.now()}\n\nMohon petunjuk rekening atau QRIS pembayarannya. Terima kasih!`
+      `Halo Admin Barber Suite! Saya ingin membeli aplikasi kasir dengan harga promo Rp 55.700.\n\nData Pembeli:\n• Nama: ${formData.name}\n• Email: ${formData.email}\n• WhatsApp: ${formData.whatsapp}\n• Order ID: ${demoOrderId || "BS-" + Date.now()}\n\nMohon petunjuk rekening atau QRIS pembayarannya. Terima kasih!`
     );
     window.open(`https://wa.me/${waNumber}?text=${text}`, "_blank");
   };
@@ -159,15 +159,15 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
               <p className="text-stone-500 text-xs mt-1 font-medium">
                 Lisensi seumur hidup tanpa biaya langganan bulanan
               </p>
-              <div className="mt-3 inline-flex items-center gap-2 bg-amber-100/80 border border-amber-300 rounded-full px-4 py-1">
-                <span className="text-amber-950 font-black text-base">
-                  Rp 50.000
-                </span>
+              <div className="mt-3 inline-flex items-center gap-2 bg-amber-100/90 border border-amber-300 rounded-full px-4 py-1">
                 <span className="text-stone-400 text-xs line-through">
-                  Rp 150.000
+                  Rp 111.400
                 </span>
-                <span className="text-[10px] bg-red-100 text-red-700 px-2 py-0.5 rounded-full font-bold uppercase">
-                  Hemat 67%
+                <span className="text-amber-950 font-black text-base">
+                  Rp 55.700
+                </span>
+                <span className="text-[10px] bg-red-600 text-white px-2 py-0.5 rounded-full font-bold uppercase">
+                  Hemat 50%
                 </span>
               </div>
             </div>
@@ -306,7 +306,7 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
                   ) : (
                     <>
                       <Sparkles className="w-4 h-4" />
-                      <span>Bayar Sekarang — Rp 50.000</span>
+                      <span>Lanjutkan Pembayaran</span>
                     </>
                   )}
                 </button>

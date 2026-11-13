@@ -16,9 +16,9 @@ const plusJakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://barbersuite.netlify.app"),
-  title: "Barber Suite — Aplikasi Kasir Barbershop Terbaik | Rp 50.000 Sekali Bayar",
+  title: "Barber Suite — Aplikasi Kasir Barbershop Modern #1 di Indonesia",
   description:
-    "Aplikasi kasir modern khusus barbershop & salon. Lebih hemat dari Moka POS, 100% offline-first, laporan keuangan PDF & CSV, bagi hasil kapster, dan follow-up WhatsApp otomatis.",
+    "Aplikasi kasir praktis khusus barbershop & salon pria. Bebas offline tanpa internet, bagi hasil kapster otomatis, cetak struk Bluetooth, dan tanpa biaya sewa bulanan.",
   keywords: [
     "Barber Suite",
     "aplikasi kasir barbershop",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Barber Suite — Aplikasi Kasir Barbershop Modern #1 di Indonesia",
     description:
-      "Aplikasi kasir digital modern untuk barbershop & salon. Cuma Rp 50.000 sekali bayar, pakai selamanya!",
+      "Aplikasi kasir praktis khusus barbershop & salon pria. Promo spesial Rp 55.700 sekali bayar, pakai selamanya!",
     images: ["/images/og-image.png"],
   },
   alternates: {
@@ -107,10 +107,10 @@ const faqJsonLd = {
     },
     {
       "@type": "Question",
-      name: "Berapa harga POS Barbershop?",
+      name: "Berapa harga aplikasi kasir Barber Suite?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Cuma Rp 50.000 sekali bayar, pakai selamanya. Tanpa biaya langganan bulanan.",
+        text: "Harga promo spesial hanya Rp 55.700 (dari harga normal Rp 111.400) sekali bayar untuk seumur hidup, tanpa biaya langganan bulanan.",
       },
     },
     {
