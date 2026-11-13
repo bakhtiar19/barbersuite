@@ -121,21 +121,10 @@ export default function HeroSection({ onOpenPayment }: HeroSectionProps) {
               <strong className="text-stone-900 font-bold">tanpa koneksi internet</strong>.
             </p>
 
-            {/* Action Area: Button without raw price, clear price block + countdown right beside price */}
-            <div className="pt-2 space-y-3">
-              <motion.button
-                type="button"
-                onClick={handleBuyClick}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl text-base sm:text-lg font-black text-stone-950 bg-gradient-to-r from-amber-400 via-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 shadow-[0_12px_28px_-6px_rgba(217,119,6,0.35)] transition-all cursor-pointer"
-              >
-                <span>Beli Sekarang</span>
-                <ArrowRight className="w-5 h-5 stroke-[2.5]" />
-              </motion.button>
-
+            {/* Action Area: Clear price block + countdown right beside price, followed by CTA button */}
+            <div className="pt-2 space-y-3.5">
               {/* Price Presentation: Strikethrough Rp 111.400 -> Rp 55.700 with Countdown Timer Directly Beside It */}
-              <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 text-stone-700 pt-1">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-stone-700">
                 <span className="text-xs sm:text-sm text-stone-400 font-bold line-through">
                   Rp 111.400
                 </span>
@@ -147,7 +136,7 @@ export default function HeroSection({ onOpenPayment }: HeroSectionProps) {
                 </span>
 
                 {/* Countdown Timer Placed Right Next to Price */}
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-amber-100/90 border border-amber-300 text-stone-900 shadow-2xs">
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-amber-100/90 border border-amber-300 text-stone-900 shadow-2xs">
                   <Clock className="w-3.5 h-3.5 text-red-600 animate-pulse shrink-0" />
                   <span className="text-[10px] font-black uppercase text-amber-950">Berakhir:</span>
                   <div className="flex items-center gap-0.5 font-mono text-xs font-black text-stone-950">
@@ -159,6 +148,18 @@ export default function HeroSection({ onOpenPayment }: HeroSectionProps) {
                   </div>
                 </div>
               </div>
+
+              {/* Action Button without raw price */}
+              <motion.button
+                type="button"
+                onClick={handleBuyClick}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl text-base sm:text-lg font-black text-stone-950 bg-gradient-to-r from-amber-400 via-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 shadow-[0_12px_28px_-6px_rgba(217,119,6,0.35)] transition-all cursor-pointer"
+              >
+                <span>Beli Sekarang</span>
+                <ArrowRight className="w-5 h-5 stroke-[2.5]" />
+              </motion.button>
             </div>
 
             {/* Trust Points */}
