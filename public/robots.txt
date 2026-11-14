@@ -4,4 +4,4 @@ Allow: /
 Disallow: /api/
 Disallow: /success
 
-Sitemap: https://pos-barbershop.netlify.app/sitemap.xml
+Sitemap: https://barbersuite.netlify.app/sitemap.xml

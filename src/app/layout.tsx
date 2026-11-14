@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "id_ID",
-    url: process.env.NEXT_PUBLIC_BASE_URL || "https://pos-barbershop.netlify.app",
+    url: process.env.NEXT_PUBLIC_BASE_URL || "https://barbersuite.netlify.app",
     siteName: "Barber Suite",
     title: "Barber Suite — Aplikasi Kasir Barbershop Modern #1 di Indonesia",
     description:
@@ -79,15 +79,9 @@ const jsonLd = {
   operatingSystem: "Android",
   offers: {
     "@type": "Offer",
-    price: "50000",
+    price: "55700",
     priceCurrency: "IDR",
     availability: "https://schema.org/InStock",
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",    // DUMMY: Ganti dengan data real
-    ratingCount: "500",    // DUMMY: Ganti dengan data real
-    bestRating: "5",
   },
   description:
     "Aplikasi kasir digital khusus barbershop & salon. Kelola transaksi, laporan keuangan, pelanggan, dan stok dalam satu aplikasi.",
@@ -99,34 +93,66 @@ const faqJsonLd = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "Apakah POS Barbershop perlu koneksi internet?",
+      name: "Apakah aplikasi ini bisa digunakan tanpa koneksi internet (offline)?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Tidak! POS Barbershop bisa digunakan secara offline. Data tersimpan di device kamu. Koneksi internet hanya diperlukan untuk sinkronisasi dan backup data ke cloud.",
+        text: "Bisa sekali! Barber Suite dirancang agar transaksi kasir dan cetak nota Bluetooth tetap berjalan normal meski sinyal internet drop atau sedang mati lampu. Anda tidak bergantung pada kuota internet.",
       },
     },
     {
       "@type": "Question",
-      name: "Berapa harga aplikasi kasir Barber Suite?",
+      name: "Bisa dipakai di berapa smartphone atau tablet?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Harga promo spesial hanya Rp 55.700 (dari harga normal Rp 111.400) sekali bayar untuk seumur hidup, tanpa biaya langganan bulanan.",
+        text: "Satu lisensi berlaku untuk 1 perangkat Android. Jika Anda memiliki cabang barbershop atau tablet tambahan, Anda cukup membeli lisensi tambahan dengan harga promo yang sama.",
       },
     },
     {
       "@type": "Question",
-      name: "Bisa untuk salon juga?",
+      name: "Bagaimana cara memasang (instalasi) aplikasinya?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Tentu! POS Barbershop dirancang untuk barbershop DAN salon. Fitur-fiturnya fleksibel dan bisa disesuaikan dengan jenis layanan apapun.",
+        text: "Sangat mudah dan cepat. Begitu pembayaran selesai, link unduh aplikasi langsung dikirimkan. Anda tinggal buka di HP Android dan klik pasang (install). Tim kami juga siap memandu via WhatsApp sampai aplikasi aktif.",
       },
     },
     {
       "@type": "Question",
-      name: "Ada garansi uang kembali?",
+      name: "Apakah data omset dan pelanggan saya aman?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Ya! Kami memberikan garansi uang kembali 7 hari. Jika kamu tidak puas dengan aplikasinya, hubungi kami via WhatsApp dan kami akan refund 100%.",
+        text: "100% aman dan rahasia. Semua data pembukuan tersimpan langsung di memori HP Anda sendiri, tidak dikirim atau dijual ke server luar mana pun.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Apakah ada garansi jika tidak cocok?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Ada! Kami memberikan garansi 100% uang kembali dalam 7 hari jika Anda merasa aplikasi ini kurang sesuai untuk alur kerja barbershop Anda.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Bisa dipakai untuk salon rambut atau pangkas rambut biasa?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Tentu bisa! Nama layanan, daftar harga paket cukur, durasi, hingga produk pomade atau pewarna rambut bisa Anda sesuaikan dengan bebas.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Apakah ada biaya langganan bulanan di kemudian hari?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Sama sekali tidak ada! Cukup bayar satu kali di awal saat harga promo, aplikasi menjadi milik Anda selamanya tanpa biaya tersembunyi.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Bagaimana jika saya butuh bantuan teknis?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Tim bantuan kami siap mendampingi pertanyaan Anda melalui WhatsApp setiap hari.",
       },
     },
   ],
@@ -137,7 +163,6 @@ const orgJsonLd = {
   "@type": "Organization",
   name: "Barber Suite",
   url: process.env.NEXT_PUBLIC_BASE_URL || "https://barbersuite.netlify.app",
-  logo: "/images/logo.png",
   contactPoint: {
     "@type": "ContactPoint",
     telephone: "+6282145773753",
@@ -153,9 +178,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${inter.variable} ${plusJakarta.variable} antialiased`}
     >
       <head>
-        {/* Midtrans Snap.js — TODO: Ganti ke production URL saat live */}
+        {/* Midtrans Snap.js — dinamis sandbox / production */}
         <script
-          src="https://app.sandbox.midtrans.com/snap/snap.js"
+          src={process.env.NEXT_PUBLIC_MIDTRANS_SNAP_URL || "https://app.sandbox.midtrans.com/snap/snap.js"}
           data-client-key={process.env.NEXT_PUBLIC_MIDTRANS_CLIENT_KEY}
           async
         />

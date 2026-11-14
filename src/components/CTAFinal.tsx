@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useCountdown } from "@/hooks/useCountdown";
 import {
   Zap,
   ShieldCheck,
@@ -16,34 +17,7 @@ interface CTAFinalProps {
 }
 
 export default function CTAFinal({ onOpenPayment }: CTAFinalProps) {
-  const [timeLeft, setTimeLeft] = useState({
-    hours: "07",
-    minutes: "42",
-    seconds: "15",
-  });
-
-  useEffect(() => {
-    const calculateTimeRemaining = () => {
-      const now = new Date();
-      const endOfDay = new Date();
-      endOfDay.setHours(23, 59, 59, 999);
-      const diff = Math.max(0, endOfDay.getTime() - now.getTime());
-
-      const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const m = Math.floor((diff / (1000 * 60)) % 60);
-      const s = Math.floor((diff / 1000) % 60);
-
-      setTimeLeft({
-        hours: String(h).padStart(2, "0"),
-        minutes: String(m).padStart(2, "0"),
-        seconds: String(s).padStart(2, "0"),
-      });
-    };
-
-    calculateTimeRemaining();
-    const interval = setInterval(calculateTimeRemaining, 1000);
-    return () => clearInterval(interval);
-  }, []);
+  const timeLeft = useCountdown();
 
   return (
     <section className="py-20 sm:py-24 bg-gradient-to-b from-[#FAF7F2] via-amber-100/50 to-[#F5ECE0] border-t border-stone-300/80 text-stone-900 text-center relative overflow-hidden">

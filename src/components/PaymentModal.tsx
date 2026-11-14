@@ -62,13 +62,7 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "Gagal membuat transaksi");
-      }
-
-      if (data.isDemoMode) {
-        setDemoOrderId(data.orderId);
-        setIsLoading(false);
-        return;
+        throw new Error(data.error || "Gagal membuat transaksi. Silakan coba lagi.");
       }
 
       if (window.snap && data.snapToken) {
@@ -132,6 +126,9 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
 
           {/* Modal Card */}
           <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="payment-modal-title"
             initial={{ opacity: 0, scale: 0.95, y: 15 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 15 }}
@@ -153,7 +150,7 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
               <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-amber-200 text-amber-950 mb-3 font-black shadow-xs">
                 <CreditCard className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-black text-stone-900 tracking-tight">
+              <h3 id="payment-modal-title" className="text-xl font-black text-stone-900 tracking-tight">
                 Beli Lisensi Barber Suite Pro
               </h3>
               <p className="text-stone-500 text-xs mt-1 font-medium">

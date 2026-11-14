@@ -1,43 +1,17 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, Zap, ShieldCheck, Clock } from "lucide-react";
+import { useCountdown } from "@/hooks/useCountdown";
 
 interface HeroSectionProps {
   onOpenPayment?: () => void;
 }
 
 export default function HeroSection({ onOpenPayment }: HeroSectionProps) {
-  const [countdown, setCountdown] = useState({
-    hours: "07",
-    minutes: "42",
-    seconds: "15",
-  });
-
-  useEffect(() => {
-    const calculateTime = () => {
-      const now = new Date();
-      const endOfDay = new Date();
-      endOfDay.setHours(23, 59, 59, 999);
-      const diff = Math.max(0, endOfDay.getTime() - now.getTime());
-
-      const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const m = Math.floor((diff / (1000 * 60)) % 60);
-      const s = Math.floor((diff / 1000) % 60);
-
-      setCountdown({
-        hours: String(h).padStart(2, "0"),
-        minutes: String(m).padStart(2, "0"),
-        seconds: String(s).padStart(2, "0"),
-      });
-    };
-
-    calculateTime();
-    const interval = setInterval(calculateTime, 1000);
-    return () => clearInterval(interval);
-  }, []);
+  const countdown = useCountdown();
 
   const handleBuyClick = (e: React.MouseEvent) => {
     e.preventDefault();
