@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { CHECKOUT_URL } from "@/config/site";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import AppScreenshotsShowcase from "@/components/AppScreenshotsShowcase";
@@ -10,17 +10,10 @@ import FAQ from "@/components/FAQ";
 import CTAFinal from "@/components/CTAFinal";
 import Footer from "@/components/Footer";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
-import PaymentModal from "@/components/PaymentModal";
 
 export default function PageClient() {
-  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
-
   const handleOpenPayment = () => {
-    setIsPaymentModalOpen(true);
-  };
-
-  const handleClosePayment = () => {
-    setIsPaymentModalOpen(false);
+    window.location.href = CHECKOUT_URL;
   };
 
   return (
@@ -51,12 +44,6 @@ export default function PageClient() {
 
       {/* Bar Beli Cepat Khusus Mobile */}
       <StickyMobileCTA onOpenPayment={handleOpenPayment} />
-
-      {/* Modal Checkout Pembayaran */}
-      <PaymentModal
-        isOpen={isPaymentModalOpen}
-        onClose={handleClosePayment}
-      />
     </>
   );
 }

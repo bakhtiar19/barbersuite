@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Scissors, Menu, X, ArrowRight, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { CHECKOUT_URL } from "@/config/site";
 
 interface NavItem {
   label: string;
@@ -116,15 +117,20 @@ export default function Navbar({ onOpenPayment }: NavbarProps) {
 
           {/* Desktop CTA Button */}
           <div className="hidden sm:flex items-center gap-2.5">
-            <button
-              type="button"
-              onClick={() => onOpenPayment?.()}
+            <a
+              href={CHECKOUT_URL}
+              onClick={(e) => {
+                if (onOpenPayment) {
+                  e.preventDefault();
+                  onOpenPayment();
+                }
+              }}
               className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black text-stone-950 bg-gradient-to-r from-amber-400 via-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 border border-amber-500/30 transition-all shadow-md shadow-amber-500/20 hover:scale-105 active:scale-95 cursor-pointer"
             >
               <Sparkles className="w-3.5 h-3.5" />
               <span>Beli Sekarang</span>
               <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
-            </button>
+            </a>
           </div>
 
           {/* Mobile Hamburger Button */}
@@ -173,17 +179,20 @@ export default function Navbar({ onOpenPayment }: NavbarProps) {
               ))}
 
               <div className="pt-3">
-                <button
-                  type="button"
-                  onClick={() => {
+                <a
+                  href={CHECKOUT_URL}
+                  onClick={(e) => {
                     setIsMobileMenuOpen(false);
-                    onOpenPayment?.();
+                    if (onOpenPayment) {
+                      e.preventDefault();
+                      onOpenPayment();
+                    }
                   }}
                   className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-black text-stone-950 bg-gradient-to-r from-amber-400 via-amber-400 to-amber-500 shadow-md cursor-pointer"
                 >
                   <Sparkles className="w-4 h-4" />
                   <span>Beli Sekarang</span>
-                </button>
+                </a>
               </div>
             </div>
           </motion.div>

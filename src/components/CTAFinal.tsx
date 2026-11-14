@@ -11,6 +11,7 @@ import {
   ArrowRight,
   Flame,
 } from "lucide-react";
+import { CHECKOUT_URL } from "@/config/site";
 
 interface CTAFinalProps {
   onOpenPayment?: () => void;
@@ -75,15 +76,20 @@ export default function CTAFinal({ onOpenPayment }: CTAFinalProps) {
 
         {/* Action Button (No direct price text) */}
         <div className="flex items-center justify-center max-w-md mx-auto">
-          <button
-            type="button"
-            onClick={() => onOpenPayment?.()}
+          <a
+            href={CHECKOUT_URL}
+            onClick={(e) => {
+              if (onOpenPayment) {
+                e.preventDefault();
+                onOpenPayment();
+              }
+            }}
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-10 py-4 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-stone-950 font-black text-base sm:text-lg shadow-xl shadow-amber-500/30 hover:scale-102 transition-all active:scale-98 cursor-pointer"
           >
             <Zap className="w-5 h-5 fill-stone-950" />
             <span>Beli Sekarang</span>
             <ArrowRight className="w-5 h-5 stroke-[2.5]" />
-          </button>
+          </a>
         </div>
 
         {/* Trust Badges */}

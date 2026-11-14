@@ -13,6 +13,7 @@ import {
   CheckCircle2,
   ArrowRight,
 } from "lucide-react";
+import { CHECKOUT_URL } from "@/config/site";
 
 interface ShowcaseTab {
   id: string;
@@ -216,14 +217,19 @@ export default function AppScreenshotsShowcase({ onOpenPayment }: AppScreenshots
 
                 {/* Bottom CTA Button (No direct price text) */}
                 <div className="pt-4 border-t border-stone-100 flex items-center gap-4">
-                  <button
-                    type="button"
-                    onClick={() => onOpenPayment?.()}
+                  <a
+                    href={CHECKOUT_URL}
+                    onClick={(e) => {
+                      if (onOpenPayment) {
+                        e.preventDefault();
+                        onOpenPayment();
+                      }
+                    }}
                     className="inline-flex items-center gap-2 text-xs sm:text-sm font-black text-stone-950 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 px-6 py-3 rounded-xl shadow-md shadow-amber-500/20 transition-all cursor-pointer hover:scale-102"
                   >
                     <span>Dapatkan Akses Sekarang</span>
                     <ArrowRight className="w-4 h-4 stroke-[2.5]" />
-                  </button>
+                  </a>
                 </div>
               </div>
 

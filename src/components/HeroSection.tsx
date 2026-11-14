@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, Zap, ShieldCheck, Clock } from "lucide-react";
 import { useCountdown } from "@/hooks/useCountdown";
+import { CHECKOUT_URL } from "@/config/site";
 
 interface HeroSectionProps {
   onOpenPayment?: () => void;
@@ -14,8 +15,8 @@ export default function HeroSection({ onOpenPayment }: HeroSectionProps) {
   const countdown = useCountdown();
 
   const handleBuyClick = (e: React.MouseEvent) => {
-    e.preventDefault();
     if (onOpenPayment) {
+      e.preventDefault();
       onOpenPayment();
     }
   };
@@ -124,8 +125,8 @@ export default function HeroSection({ onOpenPayment }: HeroSectionProps) {
               </div>
 
               {/* Action Button without raw price */}
-              <motion.button
-                type="button"
+              <motion.a
+                href={CHECKOUT_URL}
                 onClick={handleBuyClick}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -133,7 +134,7 @@ export default function HeroSection({ onOpenPayment }: HeroSectionProps) {
               >
                 <span>Beli Sekarang</span>
                 <ArrowRight className="w-5 h-5 stroke-[2.5]" />
-              </motion.button>
+              </motion.a>
             </div>
 
             {/* Trust Points */}

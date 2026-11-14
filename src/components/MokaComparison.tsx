@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Check, X, Sparkles, Zap, ArrowRight } from "lucide-react";
+import { CHECKOUT_URL } from "@/config/site";
 
 interface MokaComparisonProps {
   onOpenPayment?: () => void;
@@ -103,14 +104,19 @@ export default function MokaComparison({ onOpenPayment }: MokaComparisonProps) {
                 💰 Hemat Rp 3.500.000+ setiap tahun tanpa tagihan bulanan
               </span>
             </div>
-            <button
-              type="button"
-              onClick={() => onOpenPayment?.()}
+            <a
+              href={CHECKOUT_URL}
+              onClick={(e) => {
+                if (onOpenPayment) {
+                  e.preventDefault();
+                  onOpenPayment();
+                }
+              }}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-5 py-2 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-stone-950 font-black text-xs uppercase tracking-wider transition-all cursor-pointer shadow-xs active:scale-95"
             >
               <span>Ambil Promo Sekarang</span>
               <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
-            </button>
+            </a>
           </div>
 
         </div>
